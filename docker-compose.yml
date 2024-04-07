@@ -1,0 +1,12 @@
+version: "2.2"
+services:
+  app:
+    build: .
+    volumes:
+      - .:/navanplants
+    ports:
+      - 8000:8000
+    image: navanplants:navanplants_image
+    container_name: navanplants_container
+    command: python3 manage.py runserver 0.0.0.0:8000
+
