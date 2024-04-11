@@ -1,4 +1,4 @@
-version: "2.2"
+version: "2.4"
 services:
   app:
     build: .
@@ -9,8 +9,13 @@ services:
     image: navanplants:navanplants_image
     container_name: navanplants_container
     command: python3 manage.py runserver 0.0.0.0:8000
+    restart: always
     depends_on:
       - db
+    links:
+      - db:db
+    networks:
+      - djangonetwork
   db:
     image: postgres
     volumes:
@@ -20,6 +25,15 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     container_name: postgres_db
+    networks:
+      - djangonetwork
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 volumes:
   postgres:
+
+networks:
+  djangonetwork:
+    driver: bridge
+    external: true  
