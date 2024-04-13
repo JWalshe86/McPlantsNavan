@@ -12,6 +12,8 @@ services:
     restart: always
     depends_on:
       - db
+    environment:
+      - DB_HOST=db
     links:
       - db:db
     networks:
