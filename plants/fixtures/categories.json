@@ -1,0 +1,73 @@
+[{
+    "pk": 1,
+    "model": "plants.category",
+    "fields": {
+      "name": "bougainvillea",
+      "friendly_name": "Bougainvillea"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "plants.category",
+    "fields": {
+      "name": "daisies",
+      "friendly_name": "Daisies"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "plants.category",
+    "fields": {
+      "name": "roses",
+      "friendly_name": "Roses"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "plants.category",
+    "fields": {
+      "name": "hibiscus",
+      "friendly_name": "Hibiscus"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "plants.category",
+    "fields": {
+      "name": "hydrangeas",
+      "friendly_name": "Hydrangeas"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "plants.category",
+    "fields": {
+      "name": "lilies",
+      "friendly_name": "Lilies"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "plants.category",
+    "fields": {
+      "name": "orchids/peonies",
+      "friendly_name": "orchids/peonios"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "plants.category",
+    "fields": {
+      "name": "tulip",
+      "friendly_name": "Tulip"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "plants.category",
+    "fields": {
+      "name": "deals",
+      "friendly_name": "Deals"
+    }
+  }
+]
