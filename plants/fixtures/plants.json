@@ -1,12 +1,12 @@
-[
+
    {
     "pk": 1,
     "model": "plants.plant",
     "fields": {
       "sku": "pp5001340155",
-      "name": "Arizona Original Bootcut Jeans",
-      "description": "Bootcut jeans in our just-right original fit are comfortable and look great too.  5-pocket style sits below waist straight fit through seat and thigh bootcut leg 18\" leg opening cotton washable imported extended sizes and washes available online only",
-      "price": 53.99,
+      "name": "Purple & Red Bougainvilleas",
+      "description": "Just testing\" Hopefully bougainvillea has been updated",
+      "price": 9.99,
       "category": 1,
       "rating": 4.6,
       "image_url": "https://i.postimg.cc/Ff5jTr2f/bougainvillea-00044.jpg",
