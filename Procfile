@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT mcplantsnavan.wsgi:application  
+web: gunicorn --port=$PORT mcplantsnavan.wsgi:application  
