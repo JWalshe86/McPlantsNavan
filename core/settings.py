@@ -109,7 +109,7 @@ DATABASES = {
     }
 }
 
-DATABASE_URL = os.environ['localhost']
+DATABASE_URL = os.environ['DATABASE_URL']
 
 
 # Password validation
