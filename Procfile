@@ -1,1 +1,1 @@
-web: gunicorn --port=$PORT mcplantsnavan.wsgi:application  
+web: gunicorn core.wsgi  
