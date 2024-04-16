@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -108,9 +110,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
-DATABASE_URL = os.environ['DATABASE_URL']
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
