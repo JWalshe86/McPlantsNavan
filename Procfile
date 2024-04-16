@@ -1,1 +1,1 @@
-web: gunicorn mcplantsnavan.wsgi:application  
+web: gunicorn app:app  
