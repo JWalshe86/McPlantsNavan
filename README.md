@@ -3,7 +3,16 @@
 # Technologies Used
 
 * [jsonformatter.org](https://jsonformatter.org/)
-*[genmymodel](https://app.genmymodel.com/)
+* [genmymodel](https://app.genmymodel.com/)
+
+
+# Bugs
+
+* CategoryBug
+
+* CategoryBug(./static/pdfs/categorybug.pdf)
+
+
 
 # Credits
 
