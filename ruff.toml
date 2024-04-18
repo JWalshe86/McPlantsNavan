@@ -1,0 +1,21 @@
+#ruff.toml
+ line-length = 120
+ indent-width = 4
+
+ # Exclude directories or files from linting
+ exclude = [
+     # list excluded files or directories here
+ ]
+
+ [lint]
+ # Enable additional rules and specify which to select
+ preview = true
+ select = ["E1", "E2", "E3", "E4", "E5", "E7", "E9", "F", "I", "UP", "N", "C90"]
+
+ [lint.isort]
+ # Customize import sorting
+ # section-order = ['stdlib', 'third-party', 'first-party']
+
+ [format]
+ # Set the preferred quote style
+  quote-style = "single"
