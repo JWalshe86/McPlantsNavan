@@ -1,10 +1,4 @@
-# ORM
 
-* As there is one category to several plants. And there are always several plants to one category.
-* The relationship here is a one to many, which involves the use of a foreign key.
-* The foreign key field is always placed where the 'many' is - i.e the plants model.
-
-![ORM](~/projects/McPlantsNavan/media/readme/ORM.png)
 
 # Technologies Used
 
