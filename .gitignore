@@ -3,6 +3,8 @@ core.Microsoft*
 core.mongo*
 core.python*
 env.py
+venv
+venv/ 
 __pycache__/
 *.py[cod]
 node_modules/
