@@ -70,6 +70,21 @@ body {
     z-index: -1;
 }
 
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important:
+}
+
+#btt-button {
+    height: 5rem !important;
+    width: 5rem !important;
+    align-content: center !important;
+    margin: auto !important;
+}
+
+body > div.btt-button.w-25.h-25.d-flex.justify-content-center.mx-auto.shadow-sm.rounded-0.border.border-black {
+    cursor: pointer;
+}
 /*  plant images */ 
 
 .img-fluid {
