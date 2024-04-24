@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
+
 from .models import Plant, Category
 
 
@@ -32,7 +34,6 @@ def all_plants(request):
             plants = plants.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
-    if request.GET:
         if "q" in request.GET:
             query = request.GET["q"]
             if not query:
