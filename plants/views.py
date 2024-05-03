@@ -1,9 +1,9 @@
-from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.shortcuts import get_object_or_404, redirect, render, reverse
 
-from .models import Plant, Category
+from .models import Category, Plant
 
 
 def all_plants(request):
@@ -22,7 +22,8 @@ def all_plants(request):
             if sortkey == "name":
                 sortkey = "lower_name"
                 plants = plants.annotate(lower_name=Lower("name"))
-
+            if sortkey == 'category':
+                sortkey = 'category__name'
             if "direction" in request.GET:
                 direction = request.GET["direction"]
                 if direction == "desc":
