@@ -1,4 +1,4 @@
-<form class="form">
+<div class="form-row" method="POST" action="{% url 'add_to_cart' plant_id %}>
 	{% csrf_token %}
 	<div class="form-row">
 		<div class="col-12">
@@ -25,9 +25,10 @@
 					<i class="fas fa-chevron-left"></i>
 				</span>
 				<span class="text-uppercase">Keep Shopping</span>
+	                   {{ cart.id }} 
 			</a>
 			<input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Cart" />
 		</div>
-		<input type="hidden" name="redirect_url" value="{{ request.path }}" />
+		</div>
 	</div>
 </form>
