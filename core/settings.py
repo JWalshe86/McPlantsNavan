@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'home',
     'plants',
+    'cart',
     'core',
     'allauth',
     'allauth.account',
