@@ -1,6 +1,8 @@
 from decimal import Decimal
+
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+
 from plants.models import Plant
 
 
@@ -9,6 +11,7 @@ def cart_contents(request):
     total = 0
     plant_count = 0
     cart = request.session.get("cart", {})
+
     for item_id, item_data in cart.items():
         if isinstance(item_data, int):
             plant = get_object_or_404(Plant, pk=item_id)
@@ -23,13 +26,14 @@ def cart_contents(request):
             )
         else:
             plant = get_object_or_404(Plant, pk=item_id)
+            print('plant', plant)
             for size, quantity in item_data["items_by_size"].items():
                 total += quantity * plant.price
                 plant_count += quantity
                 cart_items.append(
                     {
                         "item_id": item_id,
-                        "quantity": quantity,
+                        "quantity": item_data,
                         "plant": plant,
                         "size": size,
                     }

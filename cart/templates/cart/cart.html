@@ -1,10 +1,14 @@
-{% extends "base.html" %} {% load static %} {% block page_header %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
 <div class="container header-container">
     <div class="row">
         <div class="col"></div>
     </div>
 </div>
-{% endblock %} {% block content %}
+{% endblock %}
+{% block content %}
 <div class="overlay"></div>
 <div class="container mb-2">
     <div class="row">
@@ -18,6 +22,10 @@
     <div class="row">
         <div class="col">
             {% if cart_items %}
+            {{ cart_items }}
+            <br>
+            <br>
+            {{ request.session.cart }}
             <div class="table-responsive rounded">
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
@@ -37,11 +45,13 @@
                         </td>
                         <td class="py-3">
                             <p class="my-0"><strong>{{ item.plant.name }}</strong></p>
+                            <p class="my-0"><strong>Size: </strong>{% if item.plant.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p></strong></p>
                             <p class="my-0 small text-muted">SKU: {{ item.plant.sku| upper }}</p>
                         </td>
                         <td class="py-3">
                             <p class="my-0">${{ item.plant.price }}</p>
                         </td>
+            {{ item.plant.size }}
                         <td class="py-3 w-25">
                             <p class="my-0">{{ item.quantity }}</p>
                         </td>

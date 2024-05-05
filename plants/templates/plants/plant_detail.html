@@ -56,21 +56,20 @@
 				<p class="mt-3">{{ plant.description }}</p>
 		<form class="form" method="POST" action="{% url 'add_to_cart' plant.id %}">
 	{% csrf_token %}
-	<div class="form-row">
-		{% with plant.has_sizes as s %}
-
-		{% if s  %}
-			<div class="col-12">
-				<select class="form-control rounded-0 w-50 name="plant_size" id="id_plant_size">
-				<option value="xs">XS</option>
-				<option value="s">S</option>
-				<option value="m">M</option>
-				<option value="l">L</option>
-				<option value="xl">XL</option>
-				</select>
-			</div>
-		{% endif %}
-
+<div class="form-row">
+                            {% with plant.has_sizes as s %}
+                            {% if s %}
+                                <div class="col-12">
+                                    <p><strong>Size:</strong></p>
+                                    <select class="form-control rounded-0 w-50" name="plant_size" id='id_plant_size'>
+                                        <option value="xs">XS</option>
+                                        <option value="s">S</option>
+                                        <option value="m" selected>M</option>
+                                        <option value="l">L</option>
+                                        <option value="xl">XL</option>
+                                    </select>
+                                </div>
+                            {% endif %}
 		<div class="col-12">
 			<p class="mt-3"><strong>Quantity:</strong></p>
 			<div class="form-group w-50">
