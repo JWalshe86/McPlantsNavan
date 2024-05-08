@@ -82,6 +82,12 @@ a.category-badge > span.badge:hover {
     margin: auto !important;
 }
 
+.btt-link, 
+.update-link,
+.remove-item{
+    cursor: pointer;
+}
+
 body > div.btt-button.w-25.h-25.d-flex.justify-content-center.mx-auto.shadow-sm.rounded-0.border.border-black {
     cursor: pointer;
 }
