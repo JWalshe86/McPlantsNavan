@@ -3,13 +3,9 @@
 
 {% block page_header %}
 <td class="table-responsive rounded">
-    <div class="row">
-        <div class="col"></div>
-    </div>
-</div>
 {% endblock %}
 {% block content %}
-<div class="overlay"></div>
+<div class="overlay">
 <div class="container mb-2">
     <div class="row">
         <div class="col">
@@ -24,7 +20,7 @@
             {% if cart_items %}
             <br>
             <br>
-            <div class="table-responsive rounded">
+            <div class="table-responsive rounded mt-4">
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
                         <tr>
@@ -141,7 +137,7 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'plants/includes/quantity_input_script.html' %}
-
+</div>
 <script type="text/javascript">
     // Update quantity on click
     $('.update-link').click(function(e) {
