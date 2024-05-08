@@ -22,10 +22,8 @@
     <div class="row">
         <div class="col">
             {% if cart_items %}
-            {{ cart_items }}
             <br>
             <br>
-            {{ request.session.cart }}
             <div class="table-responsive rounded">
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
@@ -51,9 +49,36 @@
                         <td class="py-3">
                             <p class="my-0">${{ item.plant.price }}</p>
                         </td>
-            {{ item.plant.size }}
-                        <td class="py-3 w-25">
-                            <p class="my-0">{{ item.quantity }}</p>
+                        <td class="form update-form" method="POST" action="">
+                            <form action="">
+                                {% csrf_token %}
+                            <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button class="decrement-qty btn btn-sm btn-black rounded-0" 
+                                                data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                <span>
+                                                    <i class="fas fa-minus fa-sm"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <input class="form-control form-control-sm qty_input" type="number"
+                                                                                              name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                            data-item_id="{{ item.item_id }}"
+                                            id="id_qty_{{ item.item_id }}">
+                                        <div class="input-group-append">
+                                            <button class="increment-qty btn btn-sm btn-black rounded-0"
+                                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                <span>
+                                                    <i class="fas fa-plus fa-sm"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        {% if item.plant.has_sizes %}
+                                        <input type="hidden" name="plant_size" value="{{ item.size }}">
+                                        {% endif %}
+                                    </div>
+                                </div></form>
                         </td>
                         <td class="py-3">
                             <p class="my-0">${{ item.plant.price }}</p>
