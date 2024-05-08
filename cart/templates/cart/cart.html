@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_header %}
-<div class="container header-container">
+<td class="table-responsive rounded">
     <div class="row">
         <div class="col"></div>
     </div>
@@ -79,6 +79,9 @@
                                         {% endif %}
                                     </div>
                                 </div></form>
+                                <a class="update-link text-info"><small>Updates</small></a>
+                                <a class="remove-item text-danger float-right" id="remve_{{ item.item_id }}" data-size="{{ item.size }}">
+                                    <small>Removes</small></a>
                         </td>
                         <td class="py-3">
                             <p class="my-0">${{ item.plant.price }}</p>
@@ -133,4 +136,9 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'plants/includes/quantity_input_script.html' %}
 {% endblock %}
