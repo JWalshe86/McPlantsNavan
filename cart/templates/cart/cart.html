@@ -28,7 +28,7 @@
             {% if cart_items %}
             <br>
             <br>
-            <div class="table-responsive rounded">
+            <div class="table-responsive rounded mt-4">
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
                         <tr>
@@ -83,9 +83,9 @@
                                         {% endif %}
                                     </div>
                                 </div></form>
-                                <a class="update-link text-info"><small>Updates</small></a>
+                                <a class="update-link text-info"><small>Update</small></a>
                                 <a class="remove-item text-danger float-right" id="remve_{{ item.item_id }}" data-size="{{ item.size }}">
-                                    <small>Removes</small></a>
+                                    <small>Remove</small></a>
                         </td>
                         <td class="py-3">
                             <p class="my-0">${{ item.plant.price }}</p>
