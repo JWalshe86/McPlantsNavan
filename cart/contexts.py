@@ -26,7 +26,6 @@ def cart_contents(request):
             )
         else:
             plant = get_object_or_404(Plant, pk=item_id)
-            print('plant', plant)
             for size, quantity in item_data["items_by_size"].items():
                 total += quantity * plant.price
                 plant_count += quantity
