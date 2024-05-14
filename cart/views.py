@@ -1,4 +1,7 @@
 from django.shortcuts import redirect, render, reverse, HttpResponse
+from django.contrib import messages
+
+from plants.models import Plant
 
 
 def view_cart(request):
@@ -9,6 +12,8 @@ def view_cart(request):
 
 def add_to_cart(request, item_id):
     """Add quantity of specified plant to cart"""
+
+    plant = Plant.objects.get(pk=item_id)
     quantity = int(request.POST.get("quantity"))
     redirect_url = request.POST.get("redirect_url")
     size = None
@@ -30,6 +35,7 @@ def add_to_cart(request, item_id):
             cart[item_id] += quantity
         else:
             cart[item_id] = quantity
+            messages.success(request, f'Added {plant.name} to your bag')
 
     request.session["cart"] = cart
     return redirect(redirect_url)

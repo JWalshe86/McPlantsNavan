@@ -88,6 +88,22 @@ a.category-badge > span.badge:hover {
     cursor: pointer;
 }
 
+.message-container{
+	position: fixed;
+	top: 72px;
+	right: 15px;
+	z-index: 9999999;
+}
+
+.custom-toast {
+	overflow: visible;
+}
+
+.toast-capper {
+
+	height: 2px;
+}
+
 body > div.btt-button.w-25.h-25.d-flex.justify-content-center.mx-auto.shadow-sm.rounded-0.border.border-black {
     cursor: pointer;
 }
