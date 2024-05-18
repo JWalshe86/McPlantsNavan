@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse
-form django.contrib import messages
+from django.contrib import messages
 
 from .forms import OrderForm
 
