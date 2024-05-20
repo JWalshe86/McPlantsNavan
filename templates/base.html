@@ -16,7 +16,9 @@
       />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap" />
       <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-      {% endblock %} {% block extra_css %} {% endblock %} {% block corejs %}
+      {% endblock %} {% block extra_css %} {% endblock %}
+    
+ {% block corejs %}
       <script
         src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
@@ -33,8 +35,10 @@
         crossorigin="anonymous"
       ></script>
       <script src="https://kit.fontawesome.com/ba48ac2667.js" crossorigin="anonymous"></script>
-      <script src="https://js.stripe.com/v3/" async></script>
-      {% endblock %} {% block extra_js %} {% endblock %}
+      <script src="https://js.stripe.com/v3/"></script>
+ {% endblock %} 
+
+{% block extra_js %} {% endblock %}
 
       <title>McPlants Navan {% block extra_title %}{% endblock %}</title>
     </head>
@@ -163,8 +167,6 @@
           <script type="text/javascript">
 		  $('.toast').toast('show');
 	  </script>
-	  <script id='id_stripe_public_key' type='application/json'>"pk_test_51Of16vD1UHgIZx0CYc1lVjAdJPVYTbJcWVKMbi7Erxri5i9iyEDlTfUUGGlydDT08A3JwYUHArd11vcc7VjwGVdD00gUnB4OZm"</script>
-	  <script id='id_client_secret' type='application/json'>'test client secret' </script>
 	  {% endblock %}
     </body>
   </html>
