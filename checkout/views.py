@@ -29,21 +29,6 @@ def checkout(request):
 				'county': request.POST['county'],
 
                 }
-    else:
-        cart = request.session.get('cart', {})
-        if not cart:
-            messages.error(request, "There's nothing in your cart at the moment")
-            return redirect(reverse('plants'))
-        
-        current_cart = cart_contents(request)
-        total = current_cart['grand_total']    
-        stripe_total = round(total * 100 )
-        stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
-        )
-
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order_form.save()
@@ -77,12 +62,12 @@ def checkout(request):
                 request.session['save_info'] = 'save-info' in request.POST
                 return redirect(reverse('checkout_success', args=[order.order_number]))
             else:
-                messages.error(request, "One of the plants in your cart wasn't found in our database"
-                        "Please call us for assistance!")
+                messages.error(request, "There was an error with your form." \
+                        "Please double check your information")
         else:
             cart = request.session.get('cart', {})
             if not cart:
-                meesages.error(request, "There's nothing in your cart at the moment")
+                messages.error(request, "There's nothing in your cart at the moment")
                 return redirect(reverse('plants'))
 
 
