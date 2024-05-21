@@ -45,6 +45,7 @@ card.addEventListener('change', function (event) {
 });
 
 // Handle form submit
+ $(document).ready(function() {
 var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
@@ -75,4 +76,5 @@ form.addEventListener('submit', function(ev) {
             }
         }
     });
+});
 });
