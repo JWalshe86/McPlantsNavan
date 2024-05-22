@@ -50,7 +50,7 @@ def checkout(request):
                                 plant_size=size,
                             )
                             order_line_item.save()
-                except Plant.DoesNotExist:
+                except Product.DoesNotExist:
                     messages.error(
                         request,
                         (
