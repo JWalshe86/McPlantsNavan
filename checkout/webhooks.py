@@ -1,14 +1,14 @@
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_protect
 
 from checkout.webhook_handler import StripeWH_Handler
 
 import stripe
 
 
-@csrf_exempt
+@csrf_protect
 @require_POST
 def webhook(request):
     """Listen for webhooks from Stripe"""
