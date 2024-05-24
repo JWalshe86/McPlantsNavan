@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
-
+from django.views.decorators.csrf import csrf_exempt
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from plants.models import Plant
@@ -10,6 +10,13 @@ from cart.contexts import cart_contents
 
 import stripe
 import json
+
+
+@csrf_exempt
+def your_view(request):
+    if request.method == "POST":
+        print("hi again")
+    return HttpResponse("Your response")
 
 
 @require_POST
