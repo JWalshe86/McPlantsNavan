@@ -22,7 +22,7 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-        print("testing")
+        print("testingsuccess")
         return HttpResponse(
             content=f'cccccccWebhook received: {event["type"]}', status=200
         )
@@ -31,7 +31,7 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.payment_failed webhook from Stripe
         """
-        print("testing")
+        print("testingfailure")
         return HttpResponse(
             content=f'xxxxxxxxxWebhook received: {event["type"]}', status=200
         )
