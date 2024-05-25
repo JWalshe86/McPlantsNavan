@@ -173,7 +173,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Stripe Config
 
+STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
+print("test in settings wb secret", STRIPE_WH_SECRET)
 STRIPE_CURRENCY = "usd"
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
-STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
+print("setting_secret", STRIPE_SECRET_KEY)
