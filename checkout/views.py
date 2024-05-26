@@ -56,8 +56,7 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            pid = request.POST.get("client_secret").split("_secret")[0]
-            order.stripe_pid = pid
+            # removed PID from here
             order.original_cart = json.dumps(cart)
             order.save()
             for item_id, item_data in cart.items():
@@ -79,7 +78,7 @@ def checkout(request):
                                 plant_size=size,
                             )
                             order_line_item.save()
-                except Product.DoesNotExist:
+                except Plant.DoesNotExist:
                     messages.error(
                         request,
                         (
