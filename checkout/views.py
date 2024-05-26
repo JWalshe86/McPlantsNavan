@@ -17,6 +17,8 @@ def cache_checkout_data(request):
     try:
         pid = request.POST.get("client_secret").split("_secret")[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
+        # not sure this is working
+        print("spi", stripe.PaymentIntent)
         stripe.PaymentIntent.modify(
             pid,
             metadata={
@@ -57,7 +59,7 @@ def checkout(request):
         if order_form.is_valid():
             order = order_form.save(commit=False)
             # removed PID from here
-            order.original_cart = json.dumps(cart)
+            # original cart was here.
             order.save()
             for item_id, item_data in cart.items():
                 try:
