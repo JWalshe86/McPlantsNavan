@@ -3,6 +3,7 @@ core.Microsoft*
 core.mongo*
 core.python*
 env.py
+.env
 __pycache__/
 *.py[cod]
 *.swp

@@ -16,7 +16,9 @@
       />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap" />
       <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-      {% endblock %} {% block extra_css %} {% endblock %} {% block corejs %}
+      {% endblock %} {% block extra_css %} {% endblock %}
+    
+ {% block corejs %}
       <script
         src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
@@ -33,7 +35,10 @@
         crossorigin="anonymous"
       ></script>
       <script src="https://kit.fontawesome.com/ba48ac2667.js" crossorigin="anonymous"></script>
-      {% endblock %} {% block extra_js %} {% endblock %}
+      <script src="https://js.stripe.com/v3/"></script>
+ {% endblock %} 
+
+{% block extra_js %} {% endblock %}
 
       <title>McPlants Navan {% block extra_title %}{% endblock %}</title>
     </head>
@@ -101,7 +106,7 @@
                   href="{% url 'view_cart' %}"
                 >
                   <div class="text-center">
-                    <div><i class="fas fa-shopping-bag"></i></div>
+                    <div><i class="fas fa-shopping-cart"></i></div>
                     <p class="my-0">
                       {% if grand_total %}
                       ${{ grand_total|floatformat:2 }}
@@ -162,7 +167,7 @@
           <script type="text/javascript">
 		  $('.toast').toast('show');
 	  </script>
-      {% endblock %}
+	  {% endblock %}
     </body>
   </html>
 </div>

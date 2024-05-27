@@ -11,6 +11,9 @@
 * [jsonformatter.org](https://jsonformatter.org/)
 * [genmymodel](https://app.genmymodel.com/)
 
+# Agile
+
+* ![Kanban Board](~/projects/McPlantsNavan/media/readme/kanbanboard)
 
 # Bugs
 
