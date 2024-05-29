@@ -88,6 +88,10 @@ a.category-badge > span.badge:hover {
     cursor: pointer;
 }
 
+input[name='q']::placeholder {
+    color: #aab7c4;
+}
+
 .message-container{
 	position: fixed;
 	top: 72px;
