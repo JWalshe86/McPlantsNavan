@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "home",
     "plants",
-    "cart",
     "core",
     "allauth",
     "allauth.account",
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap4",
     "profiles",
+    "cart",
 ]
 
 MIDDLEWARE = [

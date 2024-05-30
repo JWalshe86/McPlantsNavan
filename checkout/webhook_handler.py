@@ -29,6 +29,7 @@ class StripeWH_Handler:
         Handle the payment_intent.succeeded webhook from Stripe
         """
         intent = event.data.object
+        # The metadata value is empty in the intent object
         pid = intent.id
         cart = intent.metadata.cart
         save_info = intent.metadata.save_info
