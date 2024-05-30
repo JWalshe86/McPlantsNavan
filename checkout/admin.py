@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import Order, OrderLineItem
 
-# Register your models here.
-
 
 class OrderLineItemAdminInline(admin.TabularInline):
     model = OrderLineItem
@@ -24,6 +22,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     fields = (
         "order_number",
+        "user_profile",
         "date",
         "full_name",
         "email",
@@ -37,6 +36,8 @@ class OrderAdmin(admin.ModelAdmin):
         "delivery_cost",
         "order_total",
         "grand_total",
+        "original_cart",
+        "stripe_pid",
     )
 
     list_display = (
