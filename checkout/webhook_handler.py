@@ -25,7 +25,6 @@ class StripeWH_Handler:
             "checkout/confirmation_emails/confirmation_email_subject.txt",
             {"order": order},
         ).replace("\n", "")
-        )
         body = render_to_string(
             "checkout/confirmation_emails/confirmation_email_body.txt",
             {"order": order, "contact_email": settings.DEFAULT_FROM_EMAIL},
@@ -52,9 +51,12 @@ class StripeWH_Handler:
         cart = intent.metadata.cart
         save_info = intent.metadata.save_info
 
-        billing_details = intent.charges.data[0].billing_details
+        # Get the Charge object
+        stripe_charge = stripe.Charge.retrieve(intent.latest_charge)
+        # stripe charge shows billing details
+        billing_details = stripe_charge.billing_details  # updated
         shipping_details = intent.shipping
-        grand_total = round(intent.charges.data[0].amount / 100, 2)
+        grand_total = round(stripe_charge.amount / 100, 2)  # updated
 
         # Clean data in the shipping details
         for field, value in shipping_details.address.items():
@@ -62,6 +64,7 @@ class StripeWH_Handler:
                 shipping_details.address[field] = None
 
         # Update profile information if save_info was checked
+
         profile = None
         username = intent.metadata.username
         if username != "AnonymousUser":
@@ -123,11 +126,11 @@ class StripeWH_Handler:
                     stripe_pid=pid,
                 )
                 for item_id, item_data in json.loads(cart).items():
-                    plant = Plant.objects.get(id=item_id)
+                    product = Plant.objects.get(id=item_id)
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
-                            plant=plant,
+                            product=product,
                             quantity=item_data,
                         )
                         order_line_item.save()
@@ -135,9 +138,9 @@ class StripeWH_Handler:
                         for size, quantity in item_data["items_by_size"].items():
                             order_line_item = OrderLineItem(
                                 order=order,
-                                plant=plant,
+                                product=product,
                                 quantity=quantity,
-                                plant_size=size,
+                                product_size=size,
                             )
                             order_line_item.save()
             except Exception as e:
@@ -147,7 +150,6 @@ class StripeWH_Handler:
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500,
                 )
-        self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200,
