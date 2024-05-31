@@ -5,10 +5,11 @@ core.python*
 env.py
 .env
 __pycache__/
+__init__.py
 *.py[cod]
 *.swp
 node_modules/
 .github
 cloudinary_python.txt
 migrations
-
+*tests.py

@@ -7,6 +7,7 @@ from .models import Order, OrderLineItem
 from plants.models import Plant
 from profiles.models import UserProfile
 
+import stripe
 import json
 import time
 
@@ -19,11 +20,11 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
-        print("working")
         cust_email = order.email
         subject = render_to_string(
             "checkout/confirmation_emails/confirmation_email_subject.txt",
             {"order": order},
+        ).replace("\n", "")
         )
         body = render_to_string(
             "checkout/confirmation_emails/confirmation_email_body.txt",
@@ -44,7 +45,9 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
+        print("in send succeeded")
         intent = event.data.object
+        # The metadata value is empty in the intent object
         pid = intent.id
         cart = intent.metadata.cart
         save_info = intent.metadata.save_info
