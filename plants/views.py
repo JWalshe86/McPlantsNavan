@@ -4,6 +4,7 @@ from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
 from .models import Category, Plant
+from .forms import PlantForm
 
 
 def all_plants(request):
@@ -22,8 +23,8 @@ def all_plants(request):
             if sortkey == "name":
                 sortkey = "lower_name"
                 plants = plants.annotate(lower_name=Lower("name"))
-            if sortkey == 'category':
-                sortkey = 'category__name'
+            if sortkey == "category":
+                sortkey = "category__name"
             if "direction" in request.GET:
                 direction = request.GET["direction"]
                 if direction == "desc":
@@ -64,3 +65,14 @@ def plant_detail(request, plant_id):
         "plant": plant,
     }
     return render(request, "plants/plant_detail.html", context)
+
+
+def add_plant(request):
+    """Add a plant to the store"""
+    form = PlantForm()
+    template = "plants/add_plant.html"
+    context = {
+        "form": form,
+    }
+
+    return render(request, template, context)
