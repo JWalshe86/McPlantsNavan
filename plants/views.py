@@ -69,7 +69,19 @@ def plant_detail(request, plant_id):
 
 def add_plant(request):
     """Add a plant to the store"""
-    form = PlantForm()
+    if request.method == "POST":
+        form = PlantForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Successfully added plant!")
+            return redirect(reverse("add_plant"))
+        else:
+            messages.error(
+                request, "Failed to add plant. Please ensure the form is valid."
+            )
+    else:
+        form = PlantForm()
+
     template = "plants/add_plant.html"
     context = {
         "form": form,
