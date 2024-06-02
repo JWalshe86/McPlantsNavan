@@ -4,6 +4,7 @@ from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
 from .models import Category, Plant
+from .forms import PlantForm
 
 
 def all_plants(request):
@@ -22,8 +23,8 @@ def all_plants(request):
             if sortkey == "name":
                 sortkey = "lower_name"
                 plants = plants.annotate(lower_name=Lower("name"))
-            if sortkey == 'category':
-                sortkey = 'category__name'
+            if sortkey == "category":
+                sortkey = "category__name"
             if "direction" in request.GET:
                 direction = request.GET["direction"]
                 if direction == "desc":
@@ -64,3 +65,60 @@ def plant_detail(request, plant_id):
         "plant": plant,
     }
     return render(request, "plants/plant_detail.html", context)
+
+
+def add_plant(request):
+    """Add a plant to the store"""
+    if request.method == "POST":
+        form = PlantForm(request.POST, request.FILES)
+        if form.is_valid():
+            plant = form.save()
+            messages.success(request, "Successfully added plant!")
+            return redirect(reverse("plant_detail", args=[plant.id]))
+        else:
+            messages.error(
+                request, "Failed to add plant. Please ensure the form is valid."
+            )
+    else:
+        form = PlantForm()
+
+    template = "plants/add_plant.html"
+    context = {
+        "form": form,
+    }
+
+    return render(request, template, context)
+
+
+def edit_plant(request, plant_id):
+    """Edit a plant in the store"""
+    plant = get_object_or_404(Plant, pk=plant_id)
+    if request.method == "POST":
+        form = PlantForm(request.POST, request.FILES, instance=plant)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Successfully updated plant!")
+            return redirect(reverse("plant_detail", args=[plant.id]))
+        else:
+            messages.error(
+                request, "Failed to update plant. Please ensure the form is valid."
+            )
+    else:
+        form = PlantForm(instance=plant)
+        messages.info(request, f"You are editing {plant.name}")
+
+    template = "plants/edit_plant.html"
+    context = {
+        "form": form,
+        "plant": plant,
+    }
+
+    return render(request, template, context)
+
+
+def delete_plant(request, plant_id):
+    """Delete a plant from the store"""
+    plant = get_object_or_404(Plant, pk=plant_id)
+    plant.delete()
+    messages.success(request, "Plant deleted!")
+    return redirect(reverse("plants"))
