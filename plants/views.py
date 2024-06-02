@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
@@ -67,8 +68,13 @@ def plant_detail(request, plant_id):
     return render(request, "plants/plant_detail.html", context)
 
 
+@login_required
 def add_plant(request):
     """Add a plant to the store"""
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
+
     if request.method == "POST":
         form = PlantForm(request.POST, request.FILES)
         if form.is_valid():
@@ -90,8 +96,12 @@ def add_plant(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_plant(request, plant_id):
     """Edit a plant in the store"""
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
     plant = get_object_or_404(Plant, pk=plant_id)
     if request.method == "POST":
         form = PlantForm(request.POST, request.FILES, instance=plant)
@@ -116,8 +126,12 @@ def edit_plant(request, plant_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_plant(request, plant_id):
     """Delete a plant from the store"""
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
     plant = get_object_or_404(Plant, pk=plant_id)
     plant.delete()
     messages.success(request, "Plant deleted!")
