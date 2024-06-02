@@ -72,9 +72,9 @@ def add_plant(request):
     if request.method == "POST":
         form = PlantForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            plant = form.save()
             messages.success(request, "Successfully added plant!")
-            return redirect(reverse("add_plant"))
+            return redirect(reverse("plant_detail", args=[plant.id]))
         else:
             messages.error(
                 request, "Failed to add plant. Please ensure the form is valid."
@@ -114,3 +114,11 @@ def edit_plant(request, plant_id):
     }
 
     return render(request, template, context)
+
+
+def delete_plant(request, plant_id):
+    """Delete a plant from the store"""
+    plant = get_object_or_404(Plant, pk=plant_id)
+    plant.delete()
+    messages.success(request, "Plant deleted!")
+    return redirect(reverse("plants"))
