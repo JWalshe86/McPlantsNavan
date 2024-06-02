@@ -88,3 +88,29 @@ def add_plant(request):
     }
 
     return render(request, template, context)
+
+
+def edit_plant(request, plant_id):
+    """Edit a plant in the store"""
+    plant = get_object_or_404(Plant, pk=plant_id)
+    if request.method == "POST":
+        form = PlantForm(request.POST, request.FILES, instance=plant)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Successfully updated plant!")
+            return redirect(reverse("plant_detail", args=[plant.id]))
+        else:
+            messages.error(
+                request, "Failed to update plant. Please ensure the form is valid."
+            )
+    else:
+        form = PlantForm(instance=plant)
+        messages.info(request, f"You are editing {plant.name}")
+
+    template = "plants/edit_plant.html"
+    context = {
+        "form": form,
+        "plant": plant,
+    }
+
+    return render(request, template, context)
