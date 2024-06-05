@@ -1,4 +1,10 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import (
+    render,
+    redirect,
+    reverse,
+    HttpResponse,
+    get_object_or_404,
+)
 from django.contrib import messages
 
 from plants.models import Plant
@@ -34,7 +40,8 @@ def add_to_cart(request, item_id):
             else:
                 cart[item_id]["items_by_size"][size] = quantity
                 messages.success(
-                    request, f"Added size {size.upper()} {plant.name} to your cart"
+                    request,
+                    f"Added size {size.upper()} {plant.name} to your cart",
                 )
         else:
             cart[item_id] = {"items_by_size": {size: quantity}}
@@ -77,7 +84,8 @@ def adjust_cart(request, item_id):
             if not cart[item_id]["items_by_size"]:
                 cart.pop(item_id)
             messages.success(
-                request, f"Removed size {size.upper()} {plant.name} from your cart"
+                request,
+                f"Removed size {size.upper()} {plant.name} from your cart",
             )
     else:
         if quantity > 0:
@@ -108,7 +116,8 @@ def remove_from_cart(request, item_id):
             if not cart[item_id]["items_by_size"]:
                 cart.pop(item_id)
             messages.success(
-                request, f"Removed size {size.upper()} {plant.name} from your cart"
+                request,
+                f"Removed size {size.upper()} {plant.name} from your cart",
             )
         else:
             cart.pop(item_id)
