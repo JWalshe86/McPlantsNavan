@@ -40,7 +40,9 @@ def all_plants(request):
         if "q" in request.GET:
             query = request.GET["q"]
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!"
+                )
                 return redirect(reverse("plants"))
 
         queries = Q(name__icontains=query) | Q(description__icontains=query)
@@ -83,7 +85,8 @@ def add_plant(request):
             return redirect(reverse("plant_detail", args=[plant.id]))
         else:
             messages.error(
-                request, "Failed to add plant. Please ensure the form is valid."
+                request,
+                "Failed to add plant. Please ensure the form is valid.",
             )
     else:
         form = PlantForm()
@@ -111,7 +114,8 @@ def edit_plant(request, plant_id):
             return redirect(reverse("plant_detail", args=[plant.id]))
         else:
             messages.error(
-                request, "Failed to update plant. Please ensure the form is valid."
+                request,
+                "Failed to update plant. Please ensure the form is valid.",
             )
     else:
         form = PlantForm(instance=plant)
