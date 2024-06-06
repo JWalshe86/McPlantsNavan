@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Plant, Category
+from .models import Plant, Category, SeasonalEvent
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -20,6 +20,13 @@ class CategoryAdmin(admin.ModelAdmin):
         "friendly_name",
         "name",
     )
+
+
+class SeasonalEventAdmin(admin.ModelAdmin):
+    list_display = ("name", "start_date", "end_date")
+
+
+admin.site.register(SeasonalEvent, SeasonalEventAdmin)
 
 
 admin.site.register(Plant, ProductAdmin)
