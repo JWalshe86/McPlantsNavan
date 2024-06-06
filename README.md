@@ -29,3 +29,4 @@
 * [Flower Image Dataset from Kaggle.com](https://www.kaggle.com/datasets/aksha05/flower-image-dataset?)
 * [postimage to host images](https://postimg.cc/gallery/wJB7W9T)
 * [Deploy Django Project With Postgresql DB to Heroku](https://youtu.be/2OHc5EqfX5g?si=aw9Em89nmB460fss)
+* [Review Model](https://youtu.be/rnNtbcYhC-o?si=XoHG5_sVqRH2Er7p)

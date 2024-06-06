@@ -1,4 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+
+RATING = (
+    (1, "1"),
+    (2, "2"),
+    (3, "3"),
+    (4, "4"),
+    (5, "5"),
+)
 
 
 class Category(models.Model):
@@ -44,3 +54,20 @@ class Plant(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class PlantReview(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    plant = models.ForeignKey(Plant, on_delete=models.SET_NULL, null=True)
+    review = models.TextField()
+    rating = models.IntegerField(choices=RATING, default=None)
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = "Plant Reviews"
+
+    def __str__(self):
+        return self.plant.name
+
+    def __str__(self):
+        return self.rating
