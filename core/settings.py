@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 
 from dotenv import load_dotenv
 
@@ -12,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "django-insecure--tzcfn^^ach1fkh+480clc6#t9@omcy+4d1ri@-j0o2emvumak"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = "DEVELOPMENT" in os.environ
 
 ALLOWED_HOSTS = [
     "mcplantsnavan-4138e934fd9d.herokuapp.com",
@@ -101,6 +102,18 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 
+# Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+if "DATABASE_URL" in os.environ:
+    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
 
 WSGI_APPLICATION = "core.wsgi.application"
 
