@@ -103,3 +103,10 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f"SKU {self.plant.sku} on order {self.order.order_number}"
+
+
+class PlantImage(models.Model):
+    alternative_text = models.CharField(max_length=200)
+    url = models.ImageField()
+    order = models.IntegerField()
+    plant_line = models.ForeignKey(OrderLineItem, on_delete=models.CASCADE)
