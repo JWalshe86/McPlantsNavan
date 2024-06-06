@@ -8,14 +8,14 @@ class PlantImageInline(nested_admin.NestedStackedInline):
     extra = 1
 
 
-class OrderLineItemAdminInline(admin.TabularInline):
+class OrderLineItemAdminInline(nested_admin.NestedStackedInline):
     model = OrderLineItem
     inlines = [PlantImageInline]
-    readonly_fields = ("lineitem_total",)
+    extra = 1
 
 
-class OrderAdmin(admin.ModelAdmin):
-    inlines = (OrderLineItemAdminInline,)
+class OrderAdmin(nested_admin.NestedModelAdmin):
+    inlines = [OrderLineItemAdminInline]
 
     readonly_fields = (
         "order_number",
