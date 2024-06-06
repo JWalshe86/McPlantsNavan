@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
-from .models import Category, Plant
-from .forms import PlantForm
+from .models import Category, Plant, PlantReview
+from .forms import PlantForm, ReviewForm
 
 
 def all_plants(request):
@@ -40,9 +40,7 @@ def all_plants(request):
         if "q" in request.GET:
             query = request.GET["q"]
             if not query:
-                messages.error(
-                    request, "You didn't enter any search criteria!"
-                )
+                messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse("plants"))
 
         queries = Q(name__icontains=query) | Q(description__icontains=query)
@@ -140,3 +138,30 @@ def delete_plant(request, plant_id):
     plant.delete()
     messages.success(request, "Plant deleted!")
     return redirect(reverse("plants"))
+
+
+def add_review(request, plant_id):
+
+    review = get_object_or_404(PlantReview, pk=plant_id)
+    plant = get_object_or_404(Plant, pk=plant_id)
+    if request.method == "POST":
+        form = ReviewForm(request.POST, instance=plant)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Successfully added review!")
+            return redirect("plant_detail", args=[plant.id])
+        else:
+            messages.error(
+                request,
+                "Failed to add review. Please ensure the form is valid.",
+            )
+
+    else:
+        form = ReviewForm()
+
+    template = "plants/add_review.html"
+    context = {
+        "form": form,
+    }
+
+    return render(request, template, context)
