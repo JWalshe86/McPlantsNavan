@@ -1,9 +1,16 @@
+import nested_admin
 from django.contrib import admin
-from .models import Order, OrderLineItem
+from .models import Order, OrderLineItem, PlantImage
+
+
+class PlantImageInline(nested_admin.NestedStackedInline):
+    model = PlantImage
+    extra = 1
 
 
 class OrderLineItemAdminInline(admin.TabularInline):
     model = OrderLineItem
+    inlines = [PlantImageInline]
     readonly_fields = ("lineitem_total",)
 
 
