@@ -16,6 +16,16 @@ class Category(models.Model):
         return self.friendly_name
 
 
+class SeasonalEvent(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Plant(models.Model):
     category = models.ForeignKey(
         "Category", null=True, blank=True, on_delete=models.SET_NULL
@@ -25,11 +35,12 @@ class Plant(models.Model):
     description = models.TextField(max_length=1000)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(
-        max_digits=6, decimal_places=2, null=True, blank=True
-    )
+    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    seasonal_event = models.ForeignKey(
+        SeasonalEvent, on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     def __str__(self):
         return self.name
