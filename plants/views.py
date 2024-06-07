@@ -140,14 +140,25 @@ def delete_plant(request, plant_id):
     return redirect(reverse("plants"))
 
 
+def review_detail(request, review_id):
+    """A view to show review details"""
+
+    review = get_object_or_404(PlantReview, pk=review_id)
+
+    context = {
+        "review": review,
+    }
+    return render(request, "plants/review_detail.html", context)
+
+
 def add_review(request):
 
     if request.method == "POST":
         form = ReviewForm(request.POST, request.FILES)
         if form.is_valid():
-            plant = form.save()
+            review = form.save()
             messages.success(request, "Successfully added review!")
-            return redirect(reverse("plant_detail", args=[plant.id]))
+            return redirect(reverse("plant_detail", args=[review.id]))
         else:
             messages.error(
                 request,
@@ -163,3 +174,22 @@ def add_review(request):
     }
 
     return render(request, template, context)
+
+
+def edit_review(request, review_id):
+    "Edit a review"
+    review = get_object_or_404(PlantReview, pk=review_id)
+    if request.method == "POST":
+        form = ReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Successfully updated review!")
+            return redirect(reverse("plant_detail", args=[review.id]))
+        else:
+            messages.error(
+                request,
+                "Failed to update review. Please ensure the form is valid.",
+            )
+    else:
+        form = ReviewForm(instance=review)
+        messages.info(request, "Your are editing your review")
