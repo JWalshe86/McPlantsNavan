@@ -140,16 +140,14 @@ def delete_plant(request, plant_id):
     return redirect(reverse("plants"))
 
 
-def add_review(request, plant_id):
+def add_review(request):
 
-    review = get_object_or_404(PlantReview, pk=plant_id)
-    plant = get_object_or_404(Plant, pk=plant_id)
     if request.method == "POST":
-        form = ReviewForm(request.POST, instance=plant)
+        form = ReviewForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            plant = form.save()
             messages.success(request, "Successfully added review!")
-            return redirect("plant_detail", args=[plant.id])
+            return redirect(reverse("plant_detail", args=[plant.id]))
         else:
             messages.error(
                 request,
