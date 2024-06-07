@@ -25,7 +25,7 @@
 
 # Credits
 
-* Hero Image downloaded from freepik.com
+* [Hero Image downloaded from freepik.com](https://www.freepik.com/free-ai-image/vivid-colours-plants-natural-environment_157431491.htm#query=flower%20fields&position=10&from_view=keyword&track=ais_user&uuid=bc7f256e-e5cd-4281-a0d1-385efb1f6726)
 * [Flower Image Dataset from Kaggle.com](https://www.kaggle.com/datasets/aksha05/flower-image-dataset?)
 * [postimage to host images](https://postimg.cc/gallery/wJB7W9T)
 * [Deploy Django Project With Postgresql DB to Heroku](https://youtu.be/2OHc5EqfX5g?si=aw9Em89nmB460fss)
