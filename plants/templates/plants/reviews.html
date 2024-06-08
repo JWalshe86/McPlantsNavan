@@ -1,38 +1,64 @@
-{% extends "base.html" %} {% load static %} {% block page_header %}
-<div class="container header-container">
-	<div class="row">
-		<div class="col"></div>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="overlay"></div>
+<div class="row">
+	<div class="mx-auto">
+		<h1 class="suggestion-title">Reviews</h1>
+		<a href="{% url 'add_review' %}" class="btn btn-success review-btn">Add Review <i class="fas fa-pen-nib"></i></a>
 	</div>
 </div>
-{% endblock %} 
-
-{% block content %}
-
-
-<div class="overlay"></div>
-   
-     <div class="container-fluid">
-          <div class="row">
-              <div class="col text-center mt-3">
-                  <h2 class="logo-font">Reviews</h2>
-         {% for review in reviews %}
-   <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-       <div class="card h-100 border-0">
-             {{ review.name }}
-   </div>
-       </div> 
-
-
-             {{ review.date }}
-             {{ review.review }}
-             {{ review.rating }}
-             {{ review.user }}
-	     <a class="text-danger" href="{% url 'delete_review' review.id %}">Delete</a>
-               {% endfor %}
-
+<div class="container">
+	{% for review in reviews %}
+	<div class="row">
+		<div class="col-md-2 col-sm-3 text-center">
+			<p><span class="boldtext">Author:</span> {{review.user}}</p>
+		</div>
+		<div class="col-md-10 col-sm-9">
+			<h3>{{ review.name }}</h3>
+			<div class="row">
+				<div class="col-xs-9">
+					<p>{{ review.content|truncatewords:30 }}</p>
+					<p><a href="{% url 'review_detail' review.id %}" class="btn btn-info">Read more</a></p>
+					<p><span class="boldtext">Published on:</span> {{ review.date }} </p>
+					<p><span class="boldtext">Review:</span> {{review.review}}</p>
+					<p><span class="boldtext">Rating:</span> {{ review.rating }}</p>
+				</div>
+			</div>
+			<hr>
+		</div>
+	</div>
+	{% endfor %}
 </div>
-    </div>
-         </div>
-
+<div class="row">
+	<div class="col-12">
+		{% if reviews.has_other_pages %}
+		<ul class="pagination row justify-content-center">
+			{% if reviews.has_previous %}
+			<li class="page-item px-1">
+				<a href="?{{ base }}page={{ reviews.previous_page_number }}" class="page-link">&laquo;</a>
+			</li>
+			{% else %}
+			<li class="page-item disabled px-1">
+				<a class="page-link">&laquo;</a>
+			</li>
+			{% endif %} {% for x in reviews.paginator.page_range %} {% if reviews.number == x %}
+			<li class="page-item active px-1">
+				<a class="page-link">{{ x }}</a>
+			</li>
+			{% else %}
+			<li class="page-item px-1">
+				<a href="?{{ base }}page={{ x }}" class="page-link">{{ x }}</a>
+			</li>
+			{% endif %} {% endfor %} {% if reviews.has_next %}
+			<li class="page-item px-1">
+				<a href="?{{ base }}page={{ reviews.next_page_number }}" class="page-link">&raquo;</a>
+			</li>
+			{% else %}
+			<li class="page-item disabled px-1">
+				<a class="page-link">&raquo;</a>
+			</li>
+			{% endif %}
+		</ul>
+		{% endif %}
+	</div>
+</div>
 {% endblock %}
-
