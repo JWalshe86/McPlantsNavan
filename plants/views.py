@@ -140,6 +140,19 @@ def delete_plant(request, plant_id):
     return redirect(reverse("plants"))
 
 
+# Review views
+
+
+def all_reviews(request):
+    """A view to show all reviews"""
+    reviews = PlantReview.objects.all()
+
+    context = {
+        "reviews": reviews,
+    }
+    return render(request, "plants/reviews.html", context)
+
+
 def review_detail(request, review_id):
     """A view to show review details"""
 

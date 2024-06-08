@@ -8,6 +8,12 @@
 
 {% block content %}
 
+{% for review in reviews %}
+
+{{ review.id }}
+
+{% endfor %}
+
 <div class="overlay"></div>
 	<p class="mt-3">{{ review.plant }}</p>
 	<p class="mt-3">{{ review.id }}</p>
@@ -16,7 +22,6 @@
 	<p class="mt-3">{{ review.review }}</p>
 {% if request.user.is_superuser %}
       <small class="ml-3">
-                                                    <a href="{% url 'edit_review' review.id %}">Edit</a> | 
 <a class="text-danger" href="#">Delete</a>
      </small>
 
