@@ -206,3 +206,10 @@ def edit_review(request, review_id):
     else:
         form = ReviewForm(instance=review)
         messages.info(request, "Your are editing your review")
+
+        template = "plants/edit_review.html"
+        context = {
+            "form": form,
+            "review": review,
+        }
+        return render(request, template, context)
