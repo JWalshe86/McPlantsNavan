@@ -27,6 +27,7 @@
              {{ review.review }}
              {{ review.rating }}
              {{ review.user }}
+	     <a class="text-danger" href="{% url 'delete_review' review.id %}">Delete</a>
                {% endfor %}
 
 </div>

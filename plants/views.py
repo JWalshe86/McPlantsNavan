@@ -213,3 +213,14 @@ def edit_review(request, review_id):
             "review": review,
         }
         return render(request, template, context)
+
+
+def delete_review(request, review_id):
+    """Delete a review from the store"""
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
+    review = get_object_or_404(PlantReview, pk=review_id)
+    review.delete()
+    messages.success(request, "Review deleted!")
+    return redirect(reverse("reviews"))
