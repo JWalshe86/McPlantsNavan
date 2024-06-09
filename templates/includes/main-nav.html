@@ -39,5 +39,13 @@
                 <a href="{% url 'add_review' %}?category=deals" class="dropdown-item">Add Review</a>
             </div>
         </li>
+        <li class="nav-item dropdown">
+		<a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'reviews' %}" id="mixed-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Stock
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="-link">
+                <a href="{% url 'stock_display' %}?category=deals" class="dropdown-item">Current Stock</a>
+            </div>
+	</li>
     </ul>
 </div>
