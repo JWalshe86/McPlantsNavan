@@ -74,3 +74,14 @@ class PlantReview(models.Model):
 
     def __str__(self):
         return self.rating
+
+
+class Stock(models.Model):
+    units = models.BigIntegerField()
+    plant = models.OneToOneField(Plant, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.plant.name
+
+    def __str__(self):
+        return self.units
