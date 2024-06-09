@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
-from .models import Category, Plant, PlantReview
-from .forms import PlantForm, ReviewForm
+from .models import Category, Plant, PlantReview, SeasonalEvent
+from .forms import PlantForm, ReviewForm, EventForm
 
 
 def all_plants(request):
@@ -224,3 +224,43 @@ def delete_review(request, review_id):
     review.delete()
     messages.success(request, "Review deleted!")
     return redirect(reverse("reviews"))
+
+
+# Seasonal Events
+
+
+def all_events(
+    request,
+):
+    """List Season Events"""
+    events = SeasonalEvent.objects.all()
+
+    context = {
+        "events": events,
+    }
+    return render(request, "plants/events.html", context)
+
+
+def add_event(request):
+
+    if request.method == "POST":
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            event = form.save()
+            messages.success(request, "Successfully added event!")
+            return redirect(reverse("event_detail", args=[event.id]))
+        else:
+            messages.error(
+                request,
+                "Failed to add event. Please ensure the form is valid.",
+            )
+
+    else:
+        form = EventForm()
+
+    template = "plants/add_event.html"
+    context = {
+        "form": form,
+    }
+
+    return render(request, template, context)
