@@ -1,6 +1,6 @@
 from django import forms
 from .widgets import CustomClearableFileInput
-from .models import Plant, Category, PlantReview
+from .models import Plant, Category, PlantReview, SeasonalEvent
 
 
 class PlantForm(forms.ModelForm):
@@ -29,11 +29,9 @@ class ReviewForm(forms.ModelForm):
         model = PlantReview
         fields = "__all__"
 
-    # def __init__(self, *args, **kwargs):
-    # super().__init__(*args, **kwargs)
-    # categories = Category.objects.all()
-    # friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
 
-    # self.fields["category"].choices = friendly_names
-    # for field_name, field in self.fields.items():
-    # field.widget.attrs["class"] = "border-black rounded-0":w
+class EventForm(forms.ModelForm):
+
+    class Meta:
+        model = SeasonalEvent
+        fields = "__all__"

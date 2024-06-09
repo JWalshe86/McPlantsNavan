@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Plant, Category, SeasonalEvent, PlantReview
+from .models import Plant, Category, SeasonalEvent, PlantReview, Stock
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -30,9 +30,14 @@ class PlantReviewAdmin(admin.ModelAdmin):
     list_display = ("user", "plant", "review", "rating")
 
 
+class StockAdmin(admin.ModelAdmin):
+    list_display = ("plant", "units")
+
+
 admin.site.register(SeasonalEvent, SeasonalEventAdmin)
 admin.site.register(PlantReview, PlantReviewAdmin)
 
 
 admin.site.register(Plant, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Stock, StockAdmin)

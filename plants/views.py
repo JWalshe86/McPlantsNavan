@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
-from .models import Category, Plant, PlantReview
-from .forms import PlantForm, ReviewForm
+from .models import Category, Plant, PlantReview, SeasonalEvent, Stock
+from .forms import PlantForm, ReviewForm, EventForm
 
 
 def all_plants(request):
@@ -140,6 +140,19 @@ def delete_plant(request, plant_id):
     return redirect(reverse("plants"))
 
 
+# Review views
+
+
+def all_reviews(request):
+    """A view to show all reviews"""
+    reviews = PlantReview.objects.all()
+
+    context = {
+        "reviews": reviews,
+    }
+    return render(request, "plants/reviews.html", context)
+
+
 def review_detail(request, review_id):
     """A view to show review details"""
 
@@ -193,3 +206,73 @@ def edit_review(request, review_id):
     else:
         form = ReviewForm(instance=review)
         messages.info(request, "Your are editing your review")
+
+        template = "plants/edit_review.html"
+        context = {
+            "form": form,
+            "review": review,
+        }
+        return render(request, template, context)
+
+
+def delete_review(request, review_id):
+    """Delete a review from the store"""
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
+    review = get_object_or_404(PlantReview, pk=review_id)
+    review.delete()
+    messages.success(request, "Review deleted!")
+    return redirect(reverse("reviews"))
+
+
+# Seasonal Events
+
+
+def all_events(
+    request,
+):
+    """List Season Events"""
+    events = SeasonalEvent.objects.all()
+
+    context = {
+        "events": events,
+    }
+    return render(request, "plants/events.html", context)
+
+
+def add_event(request):
+
+    if request.method == "POST":
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            event = form.save()
+            messages.success(request, "Successfully added event!")
+            return redirect(reverse("event_detail", args=[event.id]))
+        else:
+            messages.error(
+                request,
+                "Failed to add event. Please ensure the form is valid.",
+            )
+
+    else:
+        form = EventForm()
+
+    template = "plants/add_event.html"
+    context = {
+        "form": form,
+    }
+
+    return render(request, template, context)
+
+
+def stock_display(
+    request,
+):
+    """List Stock"""
+    stocks = Stock.objects.all()
+
+    context = {
+        "stocks": stocks,
+    }
+    return render(request, "plants/stock.html", context)
