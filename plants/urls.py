@@ -14,4 +14,5 @@ urlpatterns = [
     path("delete/<int:plant_id>/", views.delete_plant, name="delete_plant"),
     path("all_events", views.all_events, name="all_events"),
     path("add_event", views.add_event, name="add_event"),
+    path("stock_display", views.stock_display, name="stock_display"),
 ]

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
-from .models import Category, Plant, PlantReview, SeasonalEvent
+from .models import Category, Plant, PlantReview, SeasonalEvent, Stock
 from .forms import PlantForm, ReviewForm, EventForm
 
 
@@ -264,3 +264,15 @@ def add_event(request):
     }
 
     return render(request, template, context)
+
+
+def stock_display(
+    request,
+):
+    """List Stock"""
+    stocks = Stock.objects.all()
+
+    context = {
+        "stocks": stocks,
+    }
+    return render(request, "plants/stock.html", context)
