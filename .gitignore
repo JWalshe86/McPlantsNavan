@@ -11,6 +11,7 @@ __init__.py
 node_modules/
 .github
 cloudinary_python.txt
+*Identifier
 migrations
 *migrations
 *tests.py
