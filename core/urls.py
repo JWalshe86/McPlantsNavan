@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import handler404
 from django.views.static import serve
+from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
@@ -17,6 +18,10 @@ urlpatterns = [
     re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
     re_path(
         r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATICFILES_DIRS}
+    ),
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 handler404 = "core.views.handler404"
