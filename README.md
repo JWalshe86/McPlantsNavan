@@ -30,3 +30,4 @@
 * [postimage to host images](https://postimg.cc/gallery/wJB7W9T)
 * [Deploy Django Project With Postgresql DB to Heroku](https://youtu.be/2OHc5EqfX5g?si=aw9Em89nmB460fss)
 * [Review Model](https://youtu.be/rnNtbcYhC-o?si=XoHG5_sVqRH2Er7p)
+* [Making Newsletter Master Code Online](https://youtu.be/r-V3UJ6D67E?si=lPGILH0XCca_MdBm)
