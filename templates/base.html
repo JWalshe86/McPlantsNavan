@@ -1,11 +1,11 @@
 {% load static %}
 
-<div lang="en">
+<!doctype html>
   <html lang="en">
     <head>
       {% block meta %}
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-      <meta charset="utf-8" />
+      <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
       <link
@@ -90,7 +90,7 @@
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="user-options">
                   {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
-                  <a href="" class="dropdown-item">Plant Management</a>
+		  <a href="{% url 'add_plant' %}" class="dropdown-item">Plant Management</a>
                   {% endif %}
 		  <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                   <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
