@@ -1,3 +1,21 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import NewsletterUser
+from .forms import NewsletterUserSignUpForm
+
+
+def newsletter_signup(request):
+    form = NewsletterUserSignUpForm(request.POST or None)
+
+    if form.is_valid():
+        instance = form.save(commit=False)
+        if NewsletterUser.objects.filter(email=instance.email).exist():
+            print("Sorry! this email already exists")
+        else:
+            instance.save()
+
+    context = {
+        "form": form,
+    }
+    template = "newsletters/sign_up.html"
+    return render(request, template, context)
