@@ -13,8 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "django-insecure--tzcfn^^ach1fkh+480clc6#t9@omcy+4d1ri@-j0o2emvumak"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = "DEVELOPMENT" in os.environ
-DEBUG = True
+DEBUG = "DEVELOPMENT" in os.environ
 
 ALLOWED_HOSTS = [
     "mcplantsnavan-4138e934fd9d.herokuapp.com",
@@ -46,6 +45,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "profiles",
     "cart",
+    "newsletters",
 ]
 
 MIDDLEWARE = [
