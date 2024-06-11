@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     "storages",
     "nested_admin",
     "home",
-    "newsletters",
     "plants",
     "core",
     "allauth",
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "profiles",
     "cart",
+    "newsletters",
 ]
 
 MIDDLEWARE = [
@@ -108,7 +108,6 @@ LOGIN_REDIRECT_URL = "/"
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 if "DATABASE_URL" in os.environ:
     DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 else:
