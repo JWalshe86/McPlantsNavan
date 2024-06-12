@@ -65,15 +65,19 @@ def newsletter_unsubscribe(request):
             subject = "You have been unsubscribed"
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
-            signup_message = """Sorry to see you go
-            please let us know if there was an issue"""
-            send_mail(
+            with open(
+                settings.BASE_DIR + "/templates/newsletters/unsubscribe_email.txt"
+            ) as f:
+                signup_message = f.read()
+            message = EmailMultiAlternatives(
                 subject=subject,
+                body=signup_message,
                 from_email=from_email,
-                recipient_list=to_email,
-                message=signup_message,
-                fail_silently=False,
+                to=to_email,
             )
+            html_template = get_template("newsletters/unsubscribe_email.html").render()
+            message.attach_alternative(html_template, "text/html")
+            message.send()
         else:
             messages.warning(
                 request,
