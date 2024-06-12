@@ -1,6 +1,7 @@
 from django.contrib import messages
+from django.conf import settings
 from django.shortcuts import render
-
+from django.core.mail import send_mail
 from .models import NewsletterUser
 from .forms import NewsletterUserSignUpForm
 
@@ -23,7 +24,18 @@ def newsletter_signup(request):
                 "Your email has been submitted to the database",
                 "alert alert-success alert-dismissible",
             )
-
+            subject = "Thank You For Joining Our Newsletter"
+            from_email = settings.EMAIL_HOST_USER
+            to_email = [instance.email]
+            signup_message = """Welcome to McPlantsNavan's Online Newsletter. If you would
+            like to unsubscribe visit http://127.0.0.1:8000/newsletter/unsubscribe"""
+            send_mail(
+                subject=subject,
+                from_email=from_email,
+                recipient_list=to_email,
+                message=signup_message,
+                fail_silently=False,
+            )
     context = {
         "form": form,
     }
