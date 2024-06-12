@@ -55,6 +55,18 @@ def newsletter_unsubscribe(request):
                 "Your email has been removed",
                 "alert alert-success alert-dismissible",
             )
+            subject = "You have been unsubscribed"
+            from_email = settings.EMAIL_HOST_USER
+            to_email = [instance.email]
+            signup_message = """Sorry to see you go
+            please let us know if there was an issue"""
+            send_mail(
+                subject=subject,
+                from_email=from_email,
+                recipient_list=to_email,
+                message=signup_message,
+                fail_silently=False,
+            )
         else:
             messages.warning(
                 request,
