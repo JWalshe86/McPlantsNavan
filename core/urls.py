@@ -25,7 +25,10 @@ urlpatterns = [
     ),
     re_path(
         r"^newsletter/",
-        include("newsletters.urls"),
+        include(
+            ("newsletters.urls", "newsletters"),
+            namespace="newsletter",
+        ),
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 handler404 = "core.views.handler404"
