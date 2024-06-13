@@ -5,8 +5,8 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 
 
-from .models import NewsletterUser
-from .forms import NewsletterUserSignUpForm
+from .models import NewsletterUser, Newsletter
+from .forms import NewsletterUserSignUpForm, NewsletterCreationForm
 
 
 def newsletter_signup(request):
@@ -89,4 +89,30 @@ def newsletter_unsubscribe(request):
         "form": form,
     }
     template = "newsletters/unsubscribe.html"
+    return render(request, template, context)
+
+
+def control_newsletter(request):
+    form = NewsletterCreationForm(request.POST or None)
+
+    if form.is_valid():
+        instance = form.save()
+        newsletter = Newsletter.objects.get(id=instance.id)
+        if newsletter.status == "Publish":
+            subject = newsletter.subject
+            body = newsletter.body
+            from_email = settings.EMAIL_HOST_USER
+            for email in newsletter.email.all():
+                send_mail(
+                    subject=subject,
+                    from_email=from_email,
+                    recipient_list=[email],
+                    message=body,
+                    fail_silently=True,
+                )
+
+    context = {
+        "form": form,
+    }
+    template = "control_panel/control_newsletter.html"
     return render(request, template, context)
