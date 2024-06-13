@@ -21,7 +21,11 @@
 
 * CategoryBug(./static/pdfs/categorybug.pdf)
 
+# XML Site Map
 
+* [XML site map verification](/media/readme/xml-verification.png)
+
+* [FB business page](/media/readme/fb-business-page.png)
 
 # Credits
 
