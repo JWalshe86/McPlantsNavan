@@ -30,5 +30,12 @@ urlpatterns = [
             namespace="newsletter",
         ),
     ),
+    re_path(
+        r"control/",
+        include(
+            ("control_panel.urls", "control_panel"),
+            namespace="control_panel",
+        ),
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 handler404 = "core.views.handler404"
