@@ -13,7 +13,24 @@ people are now more environmentally aware, and the spread of mobiles makes it fa
 
 Those most likely to buy plants include young families who have purchased a new home and those retired.Those living in the suburbs and countryside are more likely to want plants. Additionally, where transport is limited, people may be more incentivised to shop online. Those willing to purchase plants will typically be 'middle earners'. 
 
-2. Competitors include other online nurseries, such as Gardens4You.ie or thegardenshop.ie.  
+2. Competitors
+   
+   Competitors include other online nurseries, such as Gardens4You.ie or thegardenshop.ie.  
+
+3. Choise of plants
+   
+   Plants were chosen that were in the price range of middle earners in Ireland. Research on other websites helped determine which plants were in the highest demand. Plants were also selected by their 
+   availability. Local plants were prioritised. Prior to launching the site surveys were sent out to the local population, whereby people selected their favourite plants. A professional photographer was
+   used to ensure the plant images were of the highest quality.
+
+4. Promotion of Site
+   
+   A social media account was created using facebook [FB business page](/media/readme/fb-business-page.png). A robots.txt file was used to improve the sites search engine optimization score. 
+
+5. Customer Loyalty
+
+   A newsletter was created to keep customers informed about the site. There is also an events section whereby customers can come to events and increase footfall at the garden center. 
+   
 
 
 # ORM
@@ -37,7 +54,7 @@ Those most likely to buy plants include young families who have purchased a new 
 
 * CategoryBug
 
-* CategoryBug(./static/pdfs/categorybug.pdf)
+* [CategoryBug](./static/pdfs/categorybug.pdf)
 
 # XML Site Map
 
@@ -53,4 +70,5 @@ Those most likely to buy plants include young families who have purchased a new 
 * [Deploy Django Project With Postgresql DB to Heroku](https://youtu.be/2OHc5EqfX5g?si=aw9Em89nmB460fss)
 * [Review Model](https://youtu.be/rnNtbcYhC-o?si=XoHG5_sVqRH2Er7p)
 * [Making Newsletter Master Code Online](https://youtu.be/r-V3UJ6D67E?si=lPGILH0XCca_MdBm)
-* [Nursery-ecommerce]i(https://fastercapital.com/content/Nursery-e-commerce-platform--Building-a-Successful-Nursery-E-Commerce-Platform--A-Guide-for-Entrepreneurs.html)
+* [Nursery-ecommerce](https://fastercapital.com/content/Nursery-e-commerce-platform--Building-a-Successful-Nursery-E-Commerce-Platform--A-Guide-for-Entrepreneurs.html)
+* [Plant Favicon](https://www.plantstore.ie/)
