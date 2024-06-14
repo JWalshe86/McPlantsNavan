@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/accounts/login/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/cart/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?sort=price&amp;direction=asc</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?sort=rating&amp;direction=desc</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?sort=category&amp;direction=asc</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?category=bougainvillea</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?category=daisies</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?category=roses</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?category=hibiscus</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?category=hydrangeas</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?category=lilies</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?category=orchids/peonies</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?category=tulip</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?category=bougainvillea,daisies,roses,hibiscus,hydrangeas,lilies,orchids/peonies,tulip</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/?category=deals</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/all_reviews</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/all_reviews?category=deals</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/add_review/?category=deals</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/stock_display?category=deals</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/10/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/21/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/11/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/15/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/35/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/27/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/38/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/51/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/20/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/7/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/49/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/41/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/40/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/39/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/37/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/12/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/22/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/53/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/34/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/48/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/16/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/19/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/50/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/25/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/23/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/8/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/52/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/47/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/31/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/29/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/26/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/28/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/36/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/32/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/14/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/5/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/33/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/13/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/2/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/9/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/1/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/24/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/46/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/17/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/3/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/4/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/44/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/45/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/30/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/43/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/18/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/6/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/42/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcplantsnavan-4138e934fd9d.herokuapp.com/plants/add_review/</loc>
+  <lastmod>2024-06-13T17:33:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
