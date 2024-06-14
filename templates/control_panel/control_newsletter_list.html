@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+              <h1 class='page-header'>All Newsletters</h1>
+            </div>
+                 <div class='col-sm-2'>
+                  <a href='{% url 'control_panel:control_newsletter' %}'>
+		  <button type='button' class='btn btn-success'>New Newsletter</button>
+                  </div></a>
+                <hr>
+		<div class='table-responsive table-hover'>
+                   <table class='table'>
+                       <thead>
+			       <th>Subject</th>
+			       <th>Status</th>
+			       <th>Created</th>
+			       <th>Updated</th>
+			       <th>Edit</th>
+			       <th>Delete</th>
+		       </thead>
+		       <tbody>
+                       {% for item in items %}
+                        <tr>
+                           <td>{{ item.subject }}</td>
+                           <td>{{ item.status }}</td>
+                           <td>{{ item.created }}</td>
+                           <td>{{ item.updated }}</td>
+			   <td><a href='#'</a>Edit</td>
+			   <td><a href='#'</a>Delete</td>
+		        </tr>
+		       {% endfor %}
+		       </tbody>
+	           </table>
+		</div>
+        	</div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+            <hr>
+          <h1 class="logo-font mb-4">NewsLetter</h1>
+	  <form method="POST">{% csrf_token %}
+		  {{ form|crispy}}
+          </form>
+<button class='btn btn-default' type='submit'>Save</button>
+            </div>
+        </div>
+
+
+
+
+
+{% endblock %}
+
+
+

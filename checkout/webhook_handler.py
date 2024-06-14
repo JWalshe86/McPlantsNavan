@@ -44,7 +44,6 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-        print("in send succeeded")
         intent = event.data.object
         # The metadata value is empty in the intent object
         pid = intent.id
