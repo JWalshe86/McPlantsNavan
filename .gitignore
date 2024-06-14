@@ -1,3 +1,4 @@
+.hgignore
 venv/
 core.Microsoft*
 core.mongo*
