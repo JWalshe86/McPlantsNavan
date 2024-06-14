@@ -11,22 +11,17 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container bg-white">
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12">
             <hr>
           <h1 class="logo-font mb-4">NewsLetter</h1>
 	  <form method="POST">{% csrf_token %}
 		  {{ form|crispy}}
-          </form>
 <button class='btn btn-default' type='submit'>Save</button>
+          </form>
             </div>
         </div>
-
-
-
-
-
 {% endblock %}
 
 
