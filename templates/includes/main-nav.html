@@ -47,5 +47,14 @@
                 <a href="{% url 'stock_display' %}?category=deals" class="dropdown-item">Current Stock</a>
             </div>
 	</li>
+        <li class="nav-item dropdown">
+		<a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'control_panel:control_newsletter_list' %}" id="mixed-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Newsletters
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="-link">
+                <a href="{% url 'control_panel:control_newsletter_list' %}?category=deals" class="dropdown-item">Newsletters</a>
+                <a href="{% url 'control_panel:control_newsletter' %}?category=deals" class="dropdown-item">Add Newsletter</a>
+            </div>
+	</li>
     </ul>
 </div>
