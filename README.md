@@ -28,7 +28,7 @@
 
 
 # Overview 🚠
-This site was created to allow users book a portable pizza service. Users should be able to access the site and book the service for their event. Users can also view other events. The site mainly uses Django, Python, SASS, CSS, Javascript and python. CRUD functionality is found on both events and bookings. Only superusers can configure events. However, registered users can view their bookings and update/delete them as required.
+Online store for garden center based in Navan, where you can purchase a wide variety of plants Users should be able to access the site and select the plants they'd like to purchase. Users can also view events related to the garden center. Subscribed users can obtain a newsletter. The site mainly uses Django, CSS, Javascript and python. CRUD functionality is found on all models. Stripe is integrated for payments. Emails are sent once users register to the site or newsletter. Admin can access a stock list page. 
 
 # Business_Model
 
