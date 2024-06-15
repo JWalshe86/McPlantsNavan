@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import get_template
@@ -139,4 +139,14 @@ def control_newsletter_list(request):
 
     context = {"items": items, "page_range": page_range}
     template = "control_panel/control_newsletter_list.html"
+    return render(request, template, context)
+
+
+def control_newsletter_detail(request, pk):
+    newsletter = get_object_or_404(Newsletter, pk=pk)
+
+    context = {
+        "newsletter": newsletter,
+    }
+    template = "control_panel/control_newsletter_detail.html"
     return render(request, template, context)

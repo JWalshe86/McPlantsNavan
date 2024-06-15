@@ -33,7 +33,7 @@
 		       <tbody>
                        {% for item in items %}
                         <tr>
-                           <td>{{ item.subject }}</td>
+				<td><a href="{% url 'control_panel:control_newsletter_detail' pk=item.pk %}">{{ item.subject }}</a></td>
                            <td>{{ item.status }}</td>
                            <td>{{ item.created }}</td>
                            <td>{{ item.updated }}</td>
