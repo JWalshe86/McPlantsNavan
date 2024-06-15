@@ -18,7 +18,8 @@
 	 {{ newsletter.body }}
     </div>
         <div class='d-flex pb-2 justify-content-center align-items-center'>
-		<div class="col-sm-2"><button>Edit</button></div>
+		<div class="col-sm-2"><a href="{% url 'control_panel:control_newsletter_edit' pk=newsletter.pk %}"
+        ><button class='btn btn-success'>Edit</button></div>
 		<div class="col-sm-2"><button>Delete</button></div>
 		<div class="col-sm-2"><a href="{% url 'control_panel:control_newsletter' %}"
         ><button class='btn btn-success'>New</button></div>

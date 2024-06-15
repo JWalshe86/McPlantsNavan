@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import get_template
@@ -149,4 +149,38 @@ def control_newsletter_detail(request, pk):
         "newsletter": newsletter,
     }
     template = "control_panel/control_newsletter_detail.html"
+    return render(request, template, context)
+
+
+def control_newsletter_edit(request, pk):
+    newsletter = get_object_or_404(Newsletter, pk=pk)
+
+    if request.method == "POST":
+        form = NewsletterCreationForm(request.POST, instance=newsletter)
+
+        if form.is_valid():
+            newsletter = form.save()
+
+            if newsletter.status == "Publish":
+                subject = newsletter.subject
+                body = newsletter.body
+                from_email = settings.EMAIL_HOST_USER
+                for email in newsletter.email.all():
+                    send_mail(
+                        subject=subject,
+                        from_email=from_email,
+                        recipient_list=[email],
+                        message=body,
+                        fail_silently=True,
+                    )
+            return redirect("control_panel:control_newsletter_detail", pk=newsletter.pk)
+
+    else:
+        form = NewsletterCreationForm(instance=newsletter)
+
+    context = {
+        "form": form,
+    }
+    template = "control_panel/control_newsletter.html"
+
     return render(request, template, context)
