@@ -2,7 +2,7 @@
 
 ![Responsiveness](/static/images/readme-responsiveness-image.png)
 
-  - [OVERVIEW](#overview)
+  - [Overview](#overview)
   - [Business](#business-model)
   - [UX/UI](#uxui)
     - [STRATEGY](#strategy)
@@ -27,7 +27,7 @@
   - [ACKNOWLEDGEMENTS](#acknowledgements)
 
 
-# OVERVIEW 🚠
+# Overview 🚠
 This site was created to allow users book a portable pizza service. Users should be able to access the site and book the service for their event. Users can also view other events. The site mainly uses Django, Python, SASS, CSS, Javascript and python. CRUD functionality is found on both events and bookings. Only superusers can configure events. However, registered users can view their bookings and update/delete them as required.
 
 # Business_Model
