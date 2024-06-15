@@ -1,6 +1,6 @@
 # McPlantsNavan
 
-![Responsiveness](/static/images/readme-responsiveness-image.png)
+![Responsiveness](/media/readme/landing-page.png)
 
   - [Overview](#overview)
   - [Business](#business-model)
