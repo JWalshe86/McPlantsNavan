@@ -245,9 +245,8 @@ Use of pytest-cov to see where tests may be required. I prioritised testing my c
 
 #### User Stories Testing<br>
 
-* As a customer interested in hiring a pizzeria horsebox service, I can request to book the horsebox online so that I can use it for a personal event #3
-Achieved. See feature testing for more detail.
-[New booking created](/static/images/userstorytesting/newbookingcreated.png)
+* As a customer interested in purchasing plants, I can look at plants, add them to my cart and purchase them safely online.
+Achieved. [Stripe Testing](/media/readme/stripe-testing.png)
 
 * As a website user I can see what events have occurred or will be occurring, so I can keep informed.
 Achieved. See feature testing for more detail.
