@@ -246,7 +246,7 @@ Use of pytest-cov to see where tests may be required. I prioritised testing my c
 #### User Stories Testing<br>
 
 * As a customer interested in purchasing plants, I can look at plants, add them to my cart and purchase them safely online.
-Achieved. [Stripe Testing](/media/readme/stripe-testing.pdf)
+Achieved. [Stripe Testing](/static/pdfs/stripe-testing.pdf)
 
 * As a website user I can see what events have occurred or will be occurring, so I can keep informed.
 Achieved. See feature testing for more detail.
