@@ -115,7 +115,7 @@ def control_newsletter(request):
     context = {
         "form": form,
     }
-    template = "control_panel/control_newsletter.html"
+    template = "control_panel/control_newsletter_list.html"
     return render(request, template, context)
 
 
@@ -181,7 +181,7 @@ def control_newsletter_edit(request, pk):
     context = {
         "form": form,
     }
-    template = "control_panel/control_newsletter.html"
+    template = "control_panel/control_newsletter_list.html"
 
     return render(request, template, context)
 
