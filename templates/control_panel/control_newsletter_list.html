@@ -37,7 +37,7 @@
                            <td>{{ item.status }}</td>
                            <td>{{ item.created }}</td>
                            <td>{{ item.updated }}</td>
-				<td><a href="{% url 'control_panel:control_newsletter_edit' pk=item.pk %}">{{ item.subject }}</a>Edit</td>
+			   <td>Edit: <a href="{% url 'control_panel:control_newsletter_edit' pk=item.pk %}">{{ item.subject }}</a></td>
 			   <td><a href='#'</a>Delete</td>
 		        </tr>
 		       {% endfor %}

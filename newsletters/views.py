@@ -161,7 +161,7 @@ def control_newsletter_edit(request, pk):
         if form.is_valid():
             newsletter = form.save()
 
-            if newsletter.status == "Publish":
+            if newsletter.status == "Published":
                 subject = newsletter.subject
                 body = newsletter.body
                 from_email = settings.EMAIL_HOST_USER
