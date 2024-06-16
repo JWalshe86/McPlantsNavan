@@ -1,5 +1,6 @@
 .hgignore
 venv/
+.venv/
 core.Microsoft*
 core.mongo*
 core.python*
