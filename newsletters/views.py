@@ -184,3 +184,24 @@ def control_newsletter_edit(request, pk):
     template = "control_panel/control_newsletter.html"
 
     return render(request, template, context)
+
+
+def control_newsletter_delete(request, pk):
+    newsletter = get_object_or_404(Newsletter, pk=pk)
+
+    if request.method == "POST":
+        form = NewsletterCreationForm(request.POST, instance=newsletter)
+
+        if form.is_valid():
+            newsletter.delete()
+            return redirect("control_panel:control_newsletter_list")
+
+    else:
+        form = NewsletterCreationForm(instance=newsletter)
+
+    context = {
+        "form": form,
+    }
+    template = "control_panel/control_newsletter_delete.html"
+
+    return render(request, template, context)

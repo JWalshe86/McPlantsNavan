@@ -5,6 +5,7 @@ from newsletters.views import (
     control_newsletter_list,
     control_newsletter_detail,
     control_newsletter_edit,
+    control_newsletter_delete,
 )
 
 urlpatterns = [
@@ -21,5 +22,10 @@ urlpatterns = [
         r"^newsletter-edit/(?P<pk>\d+)/$",
         control_newsletter_edit,
         name="control_newsletter_edit",
+    ),
+    re_path(
+        r"^newsletter-delete/(?P<pk>\d+)/$",
+        control_newsletter_delete,
+        name="control_newsletter_delete",
     ),
 ]

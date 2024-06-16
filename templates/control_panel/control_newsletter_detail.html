@@ -12,7 +12,7 @@
    
       <div class='container bg-white'>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset2 main">
-         <div class="page-header">
+         <div class="page-header text-center">
               <h1>{{ newsletter.subject }}</h1>
          </div>
 	 {{ newsletter.body }}
@@ -20,7 +20,8 @@
         <div class='d-flex pb-2 justify-content-center align-items-center'>
 		<div class="col-sm-2"><a href="{% url 'control_panel:control_newsletter_edit' pk=newsletter.pk %}"
         ><button class='btn btn-info'>Edit</button></div>
-		<div class="col-sm-2"><button>Delete</button></div>
+		<div class="col-sm-2"><a href="{% url 'control_panel:control_newsletter_delete' pk=newsletter.pk %}"
+        ><button class='btn btn-danger'>Delete</button></div>
 		<div class="col-sm-2"><a href="{% url 'control_panel:control_newsletter' %}"
         ><button class='btn btn-success'>New</button></div>
        </div>       
