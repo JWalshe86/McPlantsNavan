@@ -111,11 +111,12 @@ def control_newsletter(request):
                     message=body,
                     fail_silently=True,
                 )
+        return redirect("control_panel:control_newsletter_list")
 
     context = {
         "form": form,
     }
-    template = "control_panel/control_newsletter_list.html"
+    template = "control_panel/control_newsletter.html"
     return render(request, template, context)
 
 
@@ -181,7 +182,7 @@ def control_newsletter_edit(request, pk):
     context = {
         "form": form,
     }
-    template = "control_panel/control_newsletter_list.html"
+    template = "control_panel/control_newsletter.html"
 
     return render(request, template, context)
 
@@ -203,5 +204,4 @@ def control_newsletter_delete(request, pk):
         "form": form,
     }
     template = "control_panel/control_newsletter_delete.html"
-
     return render(request, template, context)
