@@ -111,6 +111,7 @@ def control_newsletter(request):
                     message=body,
                     fail_silently=True,
                 )
+        return redirect("control_panel:control_newsletter_list")
 
     context = {
         "form": form,
@@ -203,5 +204,4 @@ def control_newsletter_delete(request, pk):
         "form": form,
     }
     template = "control_panel/control_newsletter_delete.html"
-
     return render(request, template, context)
