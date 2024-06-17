@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
@@ -164,6 +165,7 @@ def review_detail(request, review_id):
     return render(request, "plants/review_detail.html", context)
 
 
+@login_required
 def add_review(request):
 
     if request.method == "POST":
@@ -189,6 +191,7 @@ def add_review(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_review(request, review_id):
     "Edit a review"
     review = get_object_or_404(PlantReview, pk=review_id)
@@ -241,6 +244,7 @@ def all_events(
     return render(request, "plants/events.html", context)
 
 
+@staff_member_required
 def add_event(request):
 
     if request.method == "POST":
@@ -266,6 +270,7 @@ def add_event(request):
     return render(request, template, context)
 
 
+@staff_member_required
 def stock_display(
     request,
 ):

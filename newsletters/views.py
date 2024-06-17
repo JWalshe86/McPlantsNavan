@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.mail import send_mail, EmailMultiAlternatives
+from django.contrib.admin.views.decorators import staff_member_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import get_template
 
@@ -92,7 +93,7 @@ def newsletter_unsubscribe(request):
     template = "newsletters/unsubscribe.html"
     return render(request, template, context)
 
-
+@staff_member_required
 def control_newsletter(request):
     form = NewsletterCreationForm(request.POST or None)
 
