@@ -270,6 +270,17 @@ def add_event(request):
     return render(request, template, context)
 
 
+def event_detail(request, event_id):
+    """A view to show event details"""
+
+    event = get_object_or_404(SeasonalEvent, pk=event_id)
+
+    context = {
+        "event": event,
+    }
+    return render(request, "plants/event_detail.html", context)
+
+
 @staff_member_required
 def stock_display(
     request,
