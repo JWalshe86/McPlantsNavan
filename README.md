@@ -285,9 +285,9 @@ Achieved. See feature testing for more detail.
 Client asked for prices to be removed and ratings used instead.
 [See ratings](/static/images/userstorytesting/pizzaratings.png)
 
-* As a user I want to see the name of each food item underneath its image #44
+* As a user I want to be able to register to a newsletter
 Achieved. See feature testing for more detail.
-[Item description](/static/images/userstorytesting/pizzaratings.png)
+[Newsletter Testing](/static/pdfs/newsletter_testing.md)
 
 * As a user I want to be able to see if I'm logged in #99
 Achieved username presents in header.
@@ -300,9 +300,8 @@ Achieved. Restricted info for users not logged in.
 
 * As a user I want to be able to register an account using a username and password
 Achieved. See feature testing for more detail.
-[Register 1](/static/images/userstorytesting/Register1.png)
-[Register 2](/static/images/userstorytesting/Register2.png)
-[Register 3](/static/images/userstorytesting/Register3.png)
+[Authorisation Testing](/static/pdfs/register-testing.md)
+
 
 * As a user I want feedback when my form completion has been successful #93 #94
 Achieved. See feature testing for more detail.
