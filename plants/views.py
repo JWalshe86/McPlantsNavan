@@ -164,6 +164,7 @@ def review_detail(request, review_id):
     return render(request, "plants/review_detail.html", context)
 
 
+@login_required
 def add_review(request):
 
     if request.method == "POST":
@@ -188,7 +189,7 @@ def add_review(request):
 
     return render(request, template, context)
 
-
+@login_required
 def edit_review(request, review_id):
     "Edit a review"
     review = get_object_or_404(PlantReview, pk=review_id)
