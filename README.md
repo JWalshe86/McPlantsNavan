@@ -121,7 +121,7 @@ The UX was explored using a customer journey map. The site then acted successful
 * The relationship here is a one to many, which involves the use of a foreign key.
 * The foreign key field is always placed where the 'many' is - i.e the plants model.
 
-![ORM](/static/pdfs/databasediagram.png)
+![ORM](https://github.com/JWalshe86/McPlantsNavan/blob/media/databasediagram.png)
 
 
 ### FLOWCHARTS 📈<br>
