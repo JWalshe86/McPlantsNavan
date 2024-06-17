@@ -1,5 +1,5 @@
 .hgignore
-./static
+./static/*
 venv/
 .venv/
 core.Microsoft*
