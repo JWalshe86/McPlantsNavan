@@ -10,11 +10,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure--tzcfn^^ach1fkh+480clc6#t9@omcy+4d1ri@-j0o2emvumak"
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEVELOPMENT" in os.environ
-
 ALLOWED_HOSTS = [
     "mcplantsnavan-4138e934fd9d.herokuapp.com",
     "localhost",
@@ -127,7 +126,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "d9trcmulhbgunv",
         "USER": "u4ehi5100h1plk",
-        "PASSWORD": "p435d50892174f0690e9d386fb13639ebe6dc7e22205edd6b394c0f4608dab6fc",
+        "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
         "HOST": "c2dr1dq7r4d57i.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com",
         "PORT": "5432",
     }
@@ -167,7 +166,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")

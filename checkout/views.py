@@ -25,7 +25,6 @@ def cache_checkout_data(request):
                 "username": request.user,
             },
         )
-        print("metainview", stripe.PaymentIntent)
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(
