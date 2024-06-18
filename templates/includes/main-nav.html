@@ -61,7 +61,9 @@
             <div class="dropdown-menu border-0" aria-labelledby="-link">
                 <a href="{% url 'newsletters:newsletter_signup' %}?category=deals" class="dropdown-item">Newsletter Sign Up</a>
                 <a href="{% url 'control_panel:control_newsletter_list' %}?category=deals" class="dropdown-item">Newsletters</a>
+		{% if user.is_authenticated and user.is_staff %}
                 <a href="{% url 'control_panel:control_newsletter' %}?category=deals" class="dropdown-item">Add Newsletter</a>
+		{% endif %}
                 <a href="{% url 'newsletters:newsletter_unsubscribe' %}?category=deals" class="dropdown-item">Unsubscribe</a>
             </div>
 	</li>
@@ -71,7 +73,9 @@
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="-link">
                 <a href="{% url 'all_events' %}?category=deals" class="dropdown-item">Events</a>
+		{% if user.is_authenticated and user.is_staff %}
                 <a href="{% url 'add_event' %}?category=deals" class="dropdown-item">Add Event</a>
+		{% endif %}
             </div>
 	</li>
     </ul>
