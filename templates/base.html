@@ -1,22 +1,21 @@
-{% load static %}
-
 <!doctype html>
-  <html lang="en">
+<html lang="en">
+{% load static %}
     <head>
       {% block meta %}
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-      <meta charset="utf-8">
-      <meta name="google-site-verification" content="HVYiEJ9SG_NkbtzaDtdAzvmLp_4DaSXfcgd25qCH7WI" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="google-site-verification" content="HVYiEJ9SG_NkbtzaDtdAzvmLp_4DaSXfcgd25qCH7WI">
       {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
+      <meta charset="utf-8">
       <link
         rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
         crossorigin="anonymous"
-      />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap" />
-      <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+      >
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+      <link rel="stylesheet" href="{% static 'css/base.css' %}">
       <link rel="shortcut icon" href="https://www.plantstore.ie/cdn/shop/files/favicon_smallplant.png?crop=center&height=32&v=1613158403&width=32" >
       {% endblock %} {% block extra_css %} {% endblock %}
     
@@ -171,5 +170,4 @@
 	  </script>
 	  {% endblock %}
     </body>
-  </html>
-</div>
+</html>
