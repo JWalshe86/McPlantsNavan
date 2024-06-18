@@ -327,6 +327,11 @@ Achieved. See feature testing for more detail.
 ### CSS Validation
 [W3C CSS](/static/pdfs/basecsstest.pdf)
 
+### Lighthouse Testing
+
+[Lighthouse Landing Page][(/static/pdfs/landingpagelighthousetest.pdf)
+[Lighthouse All Plants Page](/static/pdfs/allplantslighthousetest.pdf)
+
 ## MODULES IMPORTED 👽
 
 
