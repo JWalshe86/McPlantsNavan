@@ -317,6 +317,15 @@ Achieved. See feature testing for more detail.
 * As a user I want to be able to access social media sites from the footer #5
 Achieved. See feature testing for more detail.
 
+## Automated Testing
+
+### HTML Validation
+
+[W3C base HTML](/static/pdfs/base.html)
+[W3C base2 HTML](/static/pdfs/base.html2.pdf)
+[W3C all plants HTML](/static/pdfs/plants.html)
+[W3C final base HTML](/static/pdfs/finalbase.htmltest.pdf)
+
 
 ## MODULES IMPORTED 👽
 
