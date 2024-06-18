@@ -300,7 +300,9 @@ Achieved. Restricted info for users not logged in.
 
 * As a user I want to be able to register an account using a username and password
 Achieved. See feature testing for more detail.
-[Authorisation Testing](/static/pdfs/register-testing.md)
+[Registration Testing](/static/pdfs/register-testing.md)
+
+[Authorisation Testing](/static/pdfs/authorisation-testing.md)
 
 
 * As a user I want feedback when my form completion has been successful #93 #94
