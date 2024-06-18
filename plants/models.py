@@ -84,4 +84,4 @@ class Stock(models.Model):
         return self.plant.name
 
     def __str__(self):
-        return self.units
+        return str(self.units)

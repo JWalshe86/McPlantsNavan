@@ -1,31 +1,20 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<div class="overlay"></div>
-<div class="row">
-	<div class="mx-auto">
-		<h1 class="suggestion-title">Reviews</h1>
-		<!-- <a href="" class="btn btn-success stock-btn">Add Review <i class="fas fa-pen-nib"></i></a> -->
-	</div>
-</div>
-<div class="container">
+{% extends 'base.html' %} {% load static %}
+
+{% block page_header %}
+    <div class="header-container">
+    </div>
+{% endblock %}
+{% block content %}
+
+<div class="container bg-white">
 	{% for stock in stocks %}
-	<div class="row">
-		<div class="col-md-2 col-sm-3 text-center">
-			<p><span class="boldtext">Author:</span> {{stock.units}}</p>
-		</div>
-		<div class="col-md-10 col-sm-9">
-			<h3>{{ stock.name }}</h3>
 			<div class="row">
 				<div class="col-xs-9">
-					<p>{{ stock.content|truncatewords:30 }}</p>
-					<!-- <p><a href="" class="btn btn-info">Read more</a></p> -->
-					<p><span class="boldtext">Published on:</span> {{ stock.date }} </p>
-					<p><span class="boldtext">Review:</span> {{stock.plant}}</p>
-					<p><span class="boldtext">Rating:</span> {{ stock.unit }}</p>
+					<p><span class="boldtext">Plant Name:</span> {{stock.plant}}</p>
+					<p><span class="boldtext">Stock Count:</span> {{stock.units}}</p>
+					<p><span class="boldtext">Last Ordered:</span> {{ stock.date }} </p>
 				</div>
 			</div>
-			<hr>
-		</div>
-	</div>
 	{% endfor %}
 </div>
 <div class="row">
