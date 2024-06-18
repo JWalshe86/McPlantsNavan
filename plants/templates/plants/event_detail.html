@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% load static %} {% block page_header %}
+<div class="container header-container">
+	<div class="row">
+		<div class="col"></div>
+	</div>
+</div>
+{% endblock %} {% block content %}
+<div class="container bg-white">
+	<div class="row">
+		<div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+			<div class="image-container my-5">
+				<h1> {{ event.name }} </h1>
+				<p> {{ event.start_date }}
+				{% if event.image %}
+				<a href="{{ plant.image.url }}" target="_blank">
+					<img
+						class="card-img-top img-fluid"
+						src="{{ event.image.url }}"
+						alt="{{ event.name }}"
+					/>
+				</a>
+				{% else %}
+				<a href="">
+					<img
+						class="card-img-top img-fluid"
+						src="{{ MEDIA_URL }}noimage.png"
+						alt="{{ event.name }}"
+					/>
+				</a>
+				{% endif %}
+		        <p>{{ event.description }}</p>
+			</div>
+		</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'plants/includes/quantity_input_script.html' %}
+{% endblock %}
+

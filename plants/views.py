@@ -270,6 +270,60 @@ def add_event(request):
     return render(request, template, context)
 
 
+def event_detail(request, event_id):
+    """A view to show event details"""
+
+    event = get_object_or_404(SeasonalEvent, pk=event_id)
+
+    context = {
+        "event": event,
+    }
+    return render(request, "plants/event_detail.html", context)
+
+
+@login_required
+def edit_event(request, event_id):
+    """Edit a plant in the store"""
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
+    event = get_object_or_404(SeasonalEvent, pk=event_id)
+    if request.method == "POST":
+        form = EventForm(request.POST, request.FILES, instance=event)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Successfully updated event!")
+            return redirect(reverse("event_detail", args=[event.id]))
+        else:
+            messages.error(
+                request,
+                "Failed to update event. Please ensure the form is valid.",
+            )
+    else:
+        form = EventForm(instance=event)
+        messages.info(request, f"You are editing {event.name}")
+
+    template = "plants/edit_event.html"
+    context = {
+        "form": form,
+        "event": event,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_event(request, event_id):
+    """Delete an event from the store"""
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
+    event = get_object_or_404(SeasonalEvent, pk=event_id)
+    event.delete()
+    messages.success(request, "Event deleted!")
+    return redirect(reverse("all_events"))
+
+
 @staff_member_required
 def stock_display(
     request,
