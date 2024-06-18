@@ -42,8 +42,8 @@
                                                 <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ event.end_date }} / 5</small>
 					    {% if request.user.is_superuser %}
 					    <small class="ml-3">
-                                                    <a href="#">Edit</a> | 
-                                                    <a class="text-danger" href="#">Delete</a>
+						    <a href="{% url 'edit_event' event.id  %}">Edit</a> | 
+						    <a class="text-danger" href="{% url 'delete_event' event.id  %}">Delete</a>
                                                 </small>
 
 
