@@ -321,9 +321,8 @@ Achieved. See feature testing for more detail.
 
 ### HTML Validation
 
-[W3C base HTML](/static/pdfs/base.html)
+
 [W3C base2 HTML](/static/pdfs/base.html2.pdf)
-[W3C all plants HTML](/static/pdfs/plants.html)
 [W3C final base HTML](/static/pdfs/finalbase.htmltest.pdf)
 
 
