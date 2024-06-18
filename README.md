@@ -320,13 +320,12 @@ Achieved. See feature testing for more detail.
 ## Automated Testing
 
 ### HTML Validation
-
-
 [W3C base2 HTML](/static/pdfs/base.html2.pdf)
 [W3C final base HTML](/static/pdfs/finalbase.htmltest.pdf)
 [W3C final base HTML](/static/pdfs/plants.pdf)
 
-
+### CSS Validation
+[W3C CSS](/static/pdfs/basecsstest.pdf)
 
 ## MODULES IMPORTED 👽
 
