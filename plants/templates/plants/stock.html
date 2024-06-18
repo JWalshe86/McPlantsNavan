@@ -1,53 +1,46 @@
-{% extends 'base.html' %} {% load static %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block page_header %}
-    <div class="header-container">
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
     </div>
 {% endblock %}
-{% block content %}
 
-<div class="container bg-white">
-	{% for stock in stocks %}
-			<div class="row">
-				<div class="col-xs-9">
-					<p><span class="boldtext">Plant Name:</span> {{stock.plant}}</p>
-					<p><span class="boldtext">Stock Count:</span> {{stock.units}}</p>
-					<p><span class="boldtext">Last Ordered:</span> {{ stock.date }} </p>
-				</div>
-			</div>
-	{% endfor %}
-</div>
-<div class="row">
-	<div class="col-12">
-		{% if stocks.has_other_pages %}
-		<ul class="pagination row justify-content-center">
-			{% if stocks.has_previous %}
-			<li class="page-item px-1">
-				<a href="?{{ base }}page={{ stocks.previous_page_number }}" class="page-link">&laquo;</a>
-			</li>
-			{% else %}
-			<li class="page-item disabled px-1">
-				<a class="page-link">&laquo;</a>
-			</li>
-			{% endif %} {% for x in stocks.paginator.page_range %} {% if stocks.number == x %}
-			<li class="page-item active px-1">
-				<a class="page-link">{{ x }}</a>
-			</li>
-			{% else %}
-			<li class="page-item px-1">
-				<a href="?{{ base }}page={{ x }}" class="page-link">{{ x }}</a>
-			</li>
-			{% endif %} {% endfor %} {% if stocks.has_next %}
-			<li class="page-item px-1">
-				<a href="?{{ base }}page={{ stocks.next_page_number }}" class="page-link">&raquo;</a>
-			</li>
-			{% else %}
-			<li class="page-item disabled px-1">
-				<a class="page-link">&raquo;</a>
-			</li>
-			{% endif %}
-		</ul>
-		{% endif %}
-	</div>
-</div>
+{% block content %}
+    <div class="container bg-white">
+        <div class="row">
+            <div class="col-12 col-md-6">
+              <h1 class='page-header'>Current Stock</h1>
+            </div>
+                 <div class='col-sm-2'>
+                  <a href='#'>
+		  <button type='button' class='btn btn-success'>New Stock Item</button>
+                  </div></a>
+                <hr>
+		<div class='table-responsive table-hover'>
+                   <table class='table'>
+                       <thead>
+			       <th>Plant</th>
+			       <th>Stock Count</th>
+			       <th>Update</th>
+			       <th>Delete</th>
+		       </thead>
+		       <tbody>
+                       {% for stock in stocks %}
+                        <tr>
+			   <td>{{ stock.plant }}</td>
+                           <td>{{ stock.units }}</td>
+			   <td> <a href="#">Edit</td>
+			   <td><a href='#'</a>Delete</td>
+		        </tr>
+		       {% endfor %}
+		       </tbody>
+	           </table>
+		</div>
+        	</div>
+            </div>
+        </div>
 {% endblock %}
