@@ -249,8 +249,8 @@ Use of pytest-cov to see where tests may be required. I prioritised testing my c
 Achieved. [Stripe Testing](/static/pdfs/stripe-testing.pdf)
 
 * As a website user I can see what events have occurred or will be occurring, so I can keep informed.
-Achieved. See feature testing for more detail.
-[Events list](/static/images/userstorytesting/canseeevents.png)
+Achieved. See feature testing for more detail. As an admin I can add, edit, delete events.
+[Event Testing](static/pdfs/testevents.md)
 
 * As a user I want to be able to see my current bookings displayed on the site.
 Achieved. See feature testing for more detail.
