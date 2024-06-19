@@ -249,6 +249,7 @@ Achieved. See feature testing for more detail.
 
 ### HTML Validation
 [W3C final base HTML](/static/pdfs/basehtmlnoerrors.png)
+[W3C final plants HTML](/static/pdfs/w3cplants.html.png)
 
 ### CSS Validation
 [W3C CSS](/static/pdfs/basecsstest.pdf)
