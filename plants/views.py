@@ -167,33 +167,9 @@ def review_detail(request, review_id):
     return render(request, "plants/review_detail.html", context)
 
 
-# @login_required
-# def add_review(request):
-
-# if request.method == "POST":
-# form = ReviewForm(request.POST, request.FILES)
-# if form.is_valid():
-# review = form.save()
-# messages.success(request, "Successfully added review!")
-# return redirect(reverse("plant_detail", args=[review.id]))
-# else:
-# messages.error(
-# request,
-# "Failed to add review. Please ensure the form is valid.",
-# )
-
-# else:
-# form = ReviewForm()
-
-# template = "plants/add_review.html"
-# context = {
-# "form": form,
-# }
-
-# return render(request, template, context)
-
-
 class add_review(CreateView):
+    """A view to add reviews"""
+
     model = PlantReview
     fields = ["plant", "review", "rating"]
     success_url = reverse_lazy("reviews")
@@ -205,7 +181,7 @@ class add_review(CreateView):
 
 @login_required
 def edit_review(request, review_id):
-    "Edit a review"
+    "A view to edit a review"
     review = get_object_or_404(PlantReview, pk=review_id)
     if request.method == "POST":
         form = ReviewForm(request.POST, request.FILES, instance=review)
@@ -247,7 +223,7 @@ def delete_review(request, review_id):
 def all_events(
     request,
 ):
-    """List Season Events"""
+    """A view to List Season Events"""
     events = SeasonalEvent.objects.all()
 
     context = {
@@ -258,6 +234,7 @@ def all_events(
 
 @staff_member_required
 def add_event(request):
+    """A view to add events"""
 
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES)
@@ -338,6 +315,7 @@ def delete_event(request, event_id):
 
 @staff_member_required
 def stock_display(
+    """A view to display stock"""
     request,
 ):
     """List Stock"""
