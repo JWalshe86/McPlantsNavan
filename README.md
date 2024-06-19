@@ -49,7 +49,7 @@ Those most likely to buy plants include young families who have purchased a new 
    
    Competitors include other online nurseries, such as Gardens4You.ie or thegardenshop.ie.
    
-3. Choise of plants
+3. Choice of plants
    
    Plants were chosen that were in the price range of middle earners in Ireland. Research on other websites helped determine which plants were in the highest demand. Plants were also selected by their 
    availability. Local plants were prioritised. Prior to launching the site surveys were sent out to the local population, whereby people selected their favourite plants. A professional photographer was
@@ -79,8 +79,8 @@ The UX focused on ensuring the site was as visual as possible. User stories were
 
 #### User Stories 📖<br>
 
-* As a customer interested in buying plants, I can look up plants online and purchase them.
-* As a website user I can see what events have occurred or will be occurring, so I can keep informed.
+* As a user interested in buying plants, I can look up plants online and purchase them.
+* As a user I can see what events have occurred or will be occurring, so I can keep informed.
 * As a user I want to be able to register for a newsletter.
 * As a user I want to get an email including my purchased items (invoice).
 * As a user I want to be able to see the prices of all the plants
@@ -92,7 +92,7 @@ The UX focused on ensuring the site was as visual as possible. User stories were
 * As a user I want a responsive header with interactive links for ease of site navigation
 * As a user I want to be able to access social media sites from the footer
 
-
+<br>
 * As staff member I want to be able to see my current stock levels for each plant displayed on the site.
 * As a staff member I want to be able to upload images related to events
 * As a staff member I want to be able to create, edit and delete newsletters
@@ -114,18 +114,6 @@ The UX focused on ensuring the site was as visual as possible. User stories were
 * The foreign key field is always placed where the 'many' is - i.e the plants model.
 
 ![ORM](https://github.com/JWalshe86/McPlantsNavan/blob/media/databasediagram.png)
-
-
-### FLOWCHARTS 📈<br>
-
-Reasoning to flowchart: A flowchart was created to present the entire user story visually. The user is initially presented
-with a welcoming landing page. The user is informed they can choose to book the pizza box for
-personal use or see when other events are on that they could attend and try some pizza. The pizza
-menu is displayed. If the user wishes to book they are shown the available dates. To book the user
-needs to login. If not already registered the user must sign up. Once the user is logged in they
-can select their preferred dates. They then receive a confirmation email regarding their booking. The dates available, personal information and password data is then updated.
-
-[Full Site Flowchart](/static/pdfs/nags-with-notions-flowchart-sprint1.pdf)
 
 # Work Flow
 
