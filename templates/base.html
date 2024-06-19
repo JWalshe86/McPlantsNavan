@@ -1,7 +1,6 @@
 <!doctype html>
-
-<!doctype html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
 <meta charset="UTF-8"> 
 <title>McPlantsNavan</title>
 {% load static %}
@@ -48,7 +47,6 @@
 
 {% block extra_js %} {% endblock %}
 
-      <title>McPlants Navan {% block extra_title %}{% endblock %}</title>
     </head>
     <body>
       <header class="container-fluid fixed-top">
@@ -66,7 +64,7 @@
                   type="text"
                   name="q"
                   placeholder="Search our site"
-                />
+                >
                 <div class="input-group-append">
                   <button
                     class="form-control btn btn-black border border-black rounded-0"
@@ -85,7 +83,7 @@
               <li class="list-inline-item dropdown">
                 <a
                   class="text-black nav-link"
-                  href="#"
+                  href="/"
                   id="user-options"
                   data-toggle="dropdown"
                   aria-haspopup="true"
@@ -172,7 +170,7 @@
       {% block page_header %} {% endblock %} 
       {% block content %} {% endblock %} 
       {% block postloadjs %} 
-          <script type="text/javascript">
+          <script>
 		  $('.toast').toast('show');
 	  </script>
 	  {% endblock %}

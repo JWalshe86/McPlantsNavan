@@ -1,15 +1,15 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="/" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold navmixed-link text-black mr-5" href="/" aria-haspopup="true" aria-expanded="false">
                 Home
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-plants-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold navmixed-link text-black mr-5" href="#" id="all-plantsmixed-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Plants
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-plants-link">
+            <div class="dropdown-menu border-0" aria-labelledby="all-plantsmixed-link">
                 <a href="{% url 'plants' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <a href="{% url 'plants' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
                 <a href="{% url 'plants' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
@@ -18,10 +18,10 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="plants-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold navmixed-link text-black mr-5" href="#" id="plantsmixed-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Plant Types
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="plants-link">
+            <div class="dropdown-menu border-0" aria-labelledby="plantsmixed-link">
                 <a href="{% url 'plants' %}?category=bougainvillea" class="dropdown-item">Bougainvillea</a>
                 <a href="{% url 'plants' %}?category=daisies" class="dropdown-item">Daisies</a>
                 <a href="{% url 'plants' %}?category=roses" class="dropdown-item">Roses</a>
@@ -36,29 +36,29 @@
         </li>
 
         <li class="nav-item dropdown">
-		<a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'reviews' %}" id="mixed-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<a class="logo-font font-weight-bold navmixed-link text-black mr-5" href="{% url 'reviews' %}" id="mixed-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Reviews
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="-link">
+            <div class="dropdown-menu border-0" aria-labelledby="mixed-link">
                 <a href="{% url 'reviews' %}?category=deals" class="dropdown-item">View Reviews</a>
                 <a href="{% url 'add_review' %}?category=deals" class="dropdown-item">Add Review</a>
             </div>
         </li>
 	{% if user.is_authenticated and user.is_staff %}
         <li class="nav-item dropdown">
-		<a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'reviews' %}" id="mixed-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<a class="logo-font font-weight-bold navmixed-link text-black mr-5" href="{% url 'reviews' %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Stock
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="-link">
+            <div class="dropdown-menu border-0" aria-labelledby="mixed-link">
                 <a href="{% url 'stock_display' %}?category=deals" class="dropdown-item">Current Stock</a>
             </div>
 	</li>
 	{% endif %}
         <li class="nav-item dropdown">
-		<a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'control_panel:control_newsletter_list' %}" id="mixed-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<a class="logo-font font-weight-bold navmixed-link text-black mr-5" href="{% url 'control_panel:control_newsletter_list' %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Newsletters
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="-link">
+            <div class="dropdown-menu border-0" aria-labelledby="mixed-link">
                 <a href="{% url 'newsletters:newsletter_signup' %}?category=deals" class="dropdown-item">Newsletter Sign Up</a>
                 <a href="{% url 'control_panel:control_newsletter_list' %}?category=deals" class="dropdown-item">Newsletters</a>
 		{% if user.is_authenticated and user.is_staff %}
@@ -68,10 +68,10 @@
             </div>
 	</li>
         <li class="nav-item dropdown">
-		<a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'all_events' %}" id="mixed-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<a class="logo-font font-weight-bold navmixed-link text-black mr-5" href="{% url 'all_events' %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Events
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="-link">
+            <div class="dropdown-menu border-0" aria-labelledby="mixed-link">
                 <a href="{% url 'all_events' %}?category=deals" class="dropdown-item">Events</a>
 		{% if user.is_authenticated and user.is_staff %}
                 <a href="{% url 'add_event' %}?category=deals" class="dropdown-item">Add Event</a>
