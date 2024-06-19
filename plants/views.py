@@ -315,7 +315,6 @@ def delete_event(request, event_id):
 
 @staff_member_required
 def stock_display(
-    """A view to display stock"""
     request,
 ):
     """List Stock"""
