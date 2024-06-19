@@ -1,4 +1,6 @@
 from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
@@ -165,30 +167,40 @@ def review_detail(request, review_id):
     return render(request, "plants/review_detail.html", context)
 
 
-@login_required
-def add_review(request):
+# @login_required
+# def add_review(request):
 
-    if request.method == "POST":
-        form = ReviewForm(request.POST, request.FILES)
-        if form.is_valid():
-            review = form.save()
-            messages.success(request, "Successfully added review!")
-            return redirect(reverse("plant_detail", args=[review.id]))
-        else:
-            messages.error(
-                request,
-                "Failed to add review. Please ensure the form is valid.",
-            )
+# if request.method == "POST":
+# form = ReviewForm(request.POST, request.FILES)
+# if form.is_valid():
+# review = form.save()
+# messages.success(request, "Successfully added review!")
+# return redirect(reverse("plant_detail", args=[review.id]))
+# else:
+# messages.error(
+# request,
+# "Failed to add review. Please ensure the form is valid.",
+# )
 
-    else:
-        form = ReviewForm()
+# else:
+# form = ReviewForm()
 
-    template = "plants/add_review.html"
-    context = {
-        "form": form,
-    }
+# template = "plants/add_review.html"
+# context = {
+# "form": form,
+# }
 
-    return render(request, template, context)
+# return render(request, template, context)
+
+
+class add_review(CreateView):
+    model = PlantReview
+    fields = ["plant", "review", "rating"]
+    success_url = reverse_lazy("reviews")
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(add_review, self).form_valid(form)
 
 
 @login_required
