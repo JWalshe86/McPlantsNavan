@@ -247,6 +247,10 @@ Achieved. See feature testing for more detail.
 
 ## Automated Testing
 
+## Python Testing
+
+* I used the black extention to lint my python code. I also passed it through https://pyrfecter.com/ and there were no issues.
+
 ### HTML Validation
 [W3C final base HTML](/static/pdfs/basehtmlnoerrors.png)
 [W3C final plants HTML](/static/pdfs/w3cplants.html.png)
