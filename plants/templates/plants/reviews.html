@@ -5,7 +5,7 @@
 		<a href="{% url 'add_review' %}" class="btn btn-success review-btn">Add Review <i class="fas fa-pen-nib"></i></a>
 	</div>
 </div>
-<div class="container bg-white">
+<div class="container bg-white" style="margin-top: 5rem">
 	{% for review in reviews %}
 	<div class="row">
 		<div class="col-md-2 col-sm-3 text-center">
@@ -16,7 +16,6 @@
 			<div class="row">
 				<div class="col-xs-9">
 					<p>{{ review.content|truncatewords:30 }}</p>
-					<p><a href="{% url 'review_detail' review.id %}" class="btn btn-info">Read more</a></p>
 					<p><span class="boldtext">Published on:</span> {{ review.date }} </p>
 					<p><span class="boldtext">Review:</span> {{review.review}}</p>
 					<p><span class="boldtext">Rating:</span> {{ review.rating }}</p>
