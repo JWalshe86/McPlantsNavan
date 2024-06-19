@@ -75,31 +75,27 @@ Those most likely to buy plants include young families who have purchased a new 
 
 #### Goals 🥅<br>
 
-The UX was explored using a customer journey map. The site then acted successfully on the insights taken from the map. The customer journey map detailed the journey and expected emotions of 3 standard users of the website. Goals and expectations are taken into account. This gave a general view of how to proceed with the project. User stories were then used to break these needs into tasks. The UI involved good use of navigation through anchor links and appropriate sizing for different devices. A toggle dropdown menu was used for smaller screens.
-
-[Customer Journey Map](/static/pdfs/nags-with-notions-customer-jouryney-map.pdf)
+The UX focused on ensuring the site was as visual as possible. User stories were used to break perspective clients needs into tasks. The UI involved good use of navigation through anchor links and appropriate sizing for different devices. A toggle dropdown menu was used for smaller screens.
 
 #### User Stories 📖<br>
 
-**The number references here proceeded by the hash key refer to the issue number in the github projects.
-
-* As a customer interested in hiring a pizzeria horsebox service, I can request to book the horsebox online so that I can use it for a personal event #3
+* As a customer interested in buying plants, I can look up plants online and purchase them.
 * As a website user I can see what events have occurred or will be occurring, so I can keep informed.
-* As a user I want to be able to see my current bookings displayed on the site.
-* As a user I want to only see my own bookings, so my booking information is kept private #171 #154
-* As a user I want to quickly see a 'book now' button which brings me to the booking form #163
-* As a user I want to be able to create bookings on the site #157
-* As a user I want to be able to update bookings on the site #159
-* As a user I want to be able to delete bookings on the site #156
-* As a user I want to be able to see the prices of all the food items #131 #45
-* As a user I want to see the name of each food item underneath its image #44
-* As a user I want to be able to see if I'm logged in #99
-* As a user I want to access my information once logged in #100
-* As a user I want to be able to register an account using a username and password
-* As a user I want feedback when my form completion has been successful #93 #94
-* As a user I want a dropdown toggle menu for mobile screen sizes #52
-* As a user I want a responsive header with interactive links for ease of site navigation #51 #4
-* As a user I want to be able to access social media sites from the footer #5
+* As staff member I want to be able to see my current stock levels for each plant displayed on the site.
+* As a user I want to be able to register for a newsletter.
+* As a user I want to get an email including my purchased items (invoice).
+* As a staff member I want to be able to create events to display online.
+* As a staff member I want to be able to update events on the site
+* As a staff member I want to be able to delete events on the site 
+* As a user I want to be able to see the prices of all the plants
+* As a user I want to see the name of each plant with a description underneath
+* As a user I want to be able to log in securely and log out
+* As a staff member I want to be able to create, edit and delete newsletters
+* As a user I want to be able to leave a review and see other reviews
+* As a user I want feedback that I've successfully submitted a form
+* As a user I want a dropdown toggle menu for mobile screen sizes
+* As a user I want a responsive header with interactive links for ease of site navigation
+* As a user I want to be able to access social media sites from the footer
 
 
 * As an admin I want to be able to upload images related to events #170 #168
