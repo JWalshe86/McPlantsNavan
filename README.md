@@ -302,6 +302,7 @@ The project will now be cloned locally for you to use.
 
 # Credits
 
+* The framework of the site and all it's code is heavily based on Code Institues [Boutique Ado website](https://github.com/code-Institute-Solutions/boutique_ado_v1/)
 * [Hero Image downloaded from freepik.com](https://www.freepik.com/free-ai-image/vivid-colours-plants-natural-environment_157431491.htm#query=flower%20fields&position=10&from_view=keyword&track=ais_user&uuid=bc7f256e-e5cd-4281-a0d1-385efb1f6726)
 * [Flower Image Dataset from Kaggle.com](https://www.kaggle.com/datasets/aksha05/flower-image-dataset?)
 * [postimage to host images](https://postimg.cc/gallery/wJB7W9T)
