@@ -215,7 +215,9 @@ Many of the packages here are dependencies of core packages. The main packages u
 
 All tests on functionality were passed.
 
-### Model Testing
+### Screensize testing
+
+[Mobile Screen Size tests](static/pdfs/screensizetests.md)
 
 #### User Stories Testing<br>
 
