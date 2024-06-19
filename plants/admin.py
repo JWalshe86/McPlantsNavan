@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
 from .models import Plant, Category, SeasonalEvent, PlantReview, Stock
 
 
@@ -28,6 +29,12 @@ class SeasonalEventAdmin(admin.ModelAdmin):
 
 class PlantReviewAdmin(admin.ModelAdmin):
     list_display = ("user", "plant", "review", "rating")
+
+    # only user can see name in dropdown - credit Born TO Code
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "user":
+            kwargs["queryset"] = User.objects.filter(username=request.user.username)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 class StockAdmin(admin.ModelAdmin):

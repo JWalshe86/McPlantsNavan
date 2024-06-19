@@ -73,7 +73,7 @@ class PlantReview(models.Model):
         return self.plant.name
 
     def __str__(self):
-        return self.rating
+        return str(self.rating)
 
 
 class Stock(models.Model):
