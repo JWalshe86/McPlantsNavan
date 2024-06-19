@@ -120,7 +120,7 @@ The UX focused on ensuring the site was as visual as possible. User stories were
 
 ## Agile
 
-![Kanban Board](~/projects/McPlantsNavan/media/readme/kanbanboard.png)
+![Kanban Board](/media/readme/kanbanboard.png)
 
 #### Sprints
 
