@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="en">
+
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<meta charset="UTF-8"> 
+<title>McPlantsNavan</title>
 {% load static %}
-    <head>
       {% block meta %}
       <!-- HTML Meta Tags -->
-<meta name="description" content="An online plant store, selling plants local to Navan, Co.Meath">
-
+<meta itemprop='onlinesite' content="An online plant store, selling plants local to Navan, Co.Meath">
 <!-- Google / Search Engine Tags -->
-<meta itemprop="name" content="McPlants Navan ">
-<meta itemprop="description" content="An online plant store, selling plants local to Navan, Co.Meath">
-<meta itemprop="image" content="https://mcplantsnavan.s3.eu-north-1.amazonaws.com/static/media/hero-image.jpg">
+<meta itemprop='sitename' content="McPlants Navan ">
+<meta  itemprop='webaddress' content="https://mcplantsnavan.s3.eu-north-1.amazonaws.com/static/media/hero-image.jpg">
       <!--[if IE]><meta name='X-UA-Compatible' http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="google-site-verification" content="HVYiEJ9SG_NkbtzaDtdAzvmLp_4DaSXfcgd25qCH7WI">
+      <meta itemprop='sizes' content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta itemprop='googlefinder' content="HVYiEJ9SG_NkbtzaDtdAzvmLp_4DaSXfcgd25qCH7WI">
       {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
-      <meta charset="utf-8" name="char version" content="type of char used">
       <link
         rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -23,7 +23,7 @@
       >
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
       <link rel="stylesheet" href="{% static 'css/base.css' %}">
-      <link rel="shortcut icon" href="https://www.plantstore.ie/cdn/shop/files/favicon_smallplant.png?crop=center&height=32&v=1613158403&width=32" >
+      <link itemprop='favicon' href="https://www.plantstore.ie/cdn/shop/files/favicon_smallplant.png?crop=center&height=32&v=1613158403&width=32" >
       {% endblock %} {% block extra_css %} {% endblock %}
     
  {% block corejs %}
@@ -52,7 +52,7 @@
     </head>
     <body>
       <header class="container-fluid fixed-top">
-        <div id="topnav" class="row pt-lg-2 d-none d-lg-flex" style="background-color: #a5eea5">
+        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
           <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
             <a href="{% url 'home' %}" class="nav-link main-logo-link">
               <h2 class="logo-font text-black my-0"><strong>McPlants</strong>Navan</h2>
@@ -127,7 +127,7 @@
             </ul>
           </div>
         </div>
-        <div class="row" style="background-color: #a5eea5">
+        <div class="row bg-white">
           <nav class="navbar navbar-expand-lg navbar-light w-100">
             <button
               class="navbar-toggler"
