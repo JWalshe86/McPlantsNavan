@@ -373,6 +373,7 @@ The project will now be cloned locally for you to use.
 * To my friends, family and colleagues at 2Toucons (Chandeep) for reviewing the site
 * To Nags with Notions for giving me images and ideas and reviewing the site
 * Code Institute
+* [Mimmi](https://github.com/Stockman-Jr) For testing the site and recommending I improve staff/user access permissions.
 
 
    
