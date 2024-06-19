@@ -209,6 +209,9 @@ Many of the packages here are dependencies of core packages. The main packages u
 * Add review dropdown showed other users
   Eventually I had to change the view for add review from a definition to a class, so I could inherit Djangos CreateView class. I got the idea from here [stackoverflow](https://stackoverflow.com/questions/45775435/modelform-with-user-being-request-user)
 
+* Unless I used a django template in the base html, the css for the rest of the site failed. I was unable to resolve this by the deadline. I've recored it as a bug. 
+[W3C base final 1 error remains](/static/pdfs/htmllinkerror.png)
+
 ## Testing
 
 ### Feature Testing
@@ -248,7 +251,10 @@ Achieved. See feature testing for more detail.
 ### HTML Validation
 [W3C base2 HTML](/static/pdfs/base.html2.pdf)
 [W3C final base HTML](/static/pdfs/finalbase.htmltest.pdf)
-[W3C final base HTML](/static/pdfs/plants.pdf)
+
+Despite searching on stackoverflow, and trying to resolve the link error below, I couldn't fix it prior to the deadline. If I change the link from a django template to an absolute ref using path, then the css fails to load for the rest of the site. I've documented this as a bug. 
+
+[W3C base final 1 error remains](/static/pdfs/htmllinkerror.png)
 
 ### CSS Validation
 [W3C CSS](/static/pdfs/basecsstest.pdf)
