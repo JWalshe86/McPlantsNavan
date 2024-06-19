@@ -146,9 +146,9 @@ There were 4 sprints
 
 ### SURFACE/DESIGN<br>
 
-I chose the 'square' color harmony using Adobe's color wheel. The base color was the color associated with Nags with Notions Logo. However I swapped out #C4C9F5 for aliceblue as I felt #C4C9F5 was a bit too harsh.
+I chose a light green, as I felt this related to the plant theme. I then used Huemint to generate a color pallete from this: #fad3b0, #5cc7f9 and #1275e0.
 
-![Color Palette](/static/images/colorpalette.png)
+![Color Palette](/static/pdfs/colorpallet.png)
 
 ## FEATURES
 
@@ -160,6 +160,7 @@ I chose the 'square' color harmony using Adobe's color wheel. The base color was
 
 * [jsonformatter.org](https://jsonformatter.org/)
 * [genmymodel](https://app.genmymodel.com/)
+* [huemint](https://huemint.com)
 
 
 ### Django Packages
