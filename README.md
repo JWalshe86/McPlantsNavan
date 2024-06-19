@@ -81,16 +81,11 @@ The UX focused on ensuring the site was as visual as possible. User stories were
 
 * As a customer interested in buying plants, I can look up plants online and purchase them.
 * As a website user I can see what events have occurred or will be occurring, so I can keep informed.
-* As staff member I want to be able to see my current stock levels for each plant displayed on the site.
 * As a user I want to be able to register for a newsletter.
 * As a user I want to get an email including my purchased items (invoice).
-* As a staff member I want to be able to create events to display online.
-* As a staff member I want to be able to update events on the site
-* As a staff member I want to be able to delete events on the site 
 * As a user I want to be able to see the prices of all the plants
 * As a user I want to see the name of each plant with a description underneath
 * As a user I want to be able to log in securely and log out
-* As a staff member I want to be able to create, edit and delete newsletters
 * As a user I want to be able to leave a review and see other reviews
 * As a user I want feedback that I've successfully submitted a form
 * As a user I want a dropdown toggle menu for mobile screen sizes
@@ -98,11 +93,12 @@ The UX focused on ensuring the site was as visual as possible. User stories were
 * As a user I want to be able to access social media sites from the footer
 
 
-* As an admin I want to be able to upload images related to events #170 #168
-* As admin I want to be able to create events but users cannot create events #168
-* As admin I want to be able to update events so new information can be added or subtracted #167
-* As admin I want to be able to delete events #167
-* As admin I want to have my passwords safe #113
+* As staff member I want to be able to see my current stock levels for each plant displayed on the site.
+* As a staff member I want to be able to upload images related to events
+* As a staff member I want to be able to create, edit and delete newsletters
+* As a staff member I want to be able to create events to display online.
+* As a staff member I want to be able to update events on the site.
+* As a staff member I want to be able to delete events on the site.
 
 
 ### SCOPE 🔭<br>
