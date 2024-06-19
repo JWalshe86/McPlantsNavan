@@ -150,13 +150,6 @@ I chose the 'square' color harmony using Adobe's color wheel. The base color was
 
 ![Color Palette](/static/images/colorpalette.png)
 
-#### Wireframes
-
-[Initial Landing Page Wireframe](/static/pdfs/Nags-With-Notions-Wireframe.pdf)
-
-
-Reasoning for Wireframe structure: As a user, I want to be able to see when the Pizza Horsebox is available for private hire. As the owner, I want customers to know they can hire the horse box and when it's available. Also, I want the user of the website to know that Nags with Notions also sells pizzas at events and when these events are on. The wireframe shows websites snippets where such features have been executed successfully. Having shown this wireframe to Nags With Notions they are happy to proceed.
-
 ## FEATURES
 
 ### EXISTING FEATURES
