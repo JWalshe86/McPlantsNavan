@@ -93,6 +93,7 @@ The UX focused on ensuring the site was as visual as possible. User stories were
 * As a user I want to be able to access social media sites from the footer
 
 <br>
+
 * As staff member I want to be able to see my current stock levels for each plant displayed on the site.
 * As a staff member I want to be able to upload images related to events
 * As a staff member I want to be able to create, edit and delete newsletters
