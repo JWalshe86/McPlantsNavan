@@ -206,6 +206,8 @@ Many of the packages here are dependencies of core packages. The main packages u
 * Could not access django
   I changed my 'venv' virtual environment folder from 'venv' to '.venv'. This resulted in my requirements.txt file emptying and I couldn't access django. I had to delete everything in the django db and make migrations from scratch. I also had to re-upload the fixtures. 
   
+* Add review dropdown showed other users
+  Eventually I had to change the view for add review from a definition to a class, so I could inherit Djangos CreateView class. I got the idea from here [stackoverflow](https://stackoverflow.com/questions/45775435/modelform-with-user-being-request-user)
 
 ## Testing
 
