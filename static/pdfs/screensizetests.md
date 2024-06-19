@@ -2,7 +2,7 @@ All tests took place on an iphone 7 using safari.
 
 The css for reviews needs work. The dropdown menu for newsletters shows all users. The email input field for the newsletter form is difficult to use. 
 
-[Successfull login](/static/pdfs/screensizetests/successfulllogin.PNG)
+[Successfull login](/static/pdfs/screensizetests/successfullogin.PNG)
 [main dropdown](/static/pdfs/screensizetests/maindropdown.PNG)
 [search button](/static/pdfs/screensizetests/searchbutton.PNG)
 [plants page](/static/pdfs/screensizetests/plantspage.PNG)
