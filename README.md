@@ -241,6 +241,10 @@ Achieved. See feature testing for more detail.
 * As a user I want to be able to access social media sites from the footer #5
 Achieved. See feature testing for more detail.
 
+## 404 Page
+* Custom 404 page for incorrect site entries. Users can go back to the home page.
+  [custom 404 page](/static/pfds/custom404.png)
+
 ## Automated Testing
 
 ### HTML Validation
