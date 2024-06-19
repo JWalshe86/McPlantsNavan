@@ -154,7 +154,16 @@ I chose a light green, as I felt this related to the plant theme. I then used Hu
 
 ### EXISTING FEATURES
 
+* Select multiple plants, add them to a cart and purchase them online
+* Subscribe to newsletter
+* Receive emails upon sign up to site, sign-up to newsletter and upon a successful purchase
+* See upcoming events
+* See reviews
+* See current stock
+
 ### FUTURE FEATURES 🚀
+
+* Dynamic stock takes
 
 ## Technologies used 🧑‍💻
 
@@ -165,8 +174,8 @@ I chose a light green, as I felt this related to the plant theme. I then used Hu
 
 ### Django Packages
 
-- [Requirements.txt1](./static/images/requirements.txt1.png)
-- [Requirements.txt2](./static/images/requirements.txt2.png)
+- [Requirements.txt](./requirements.txt)
+
 
 Many of the packages here are dependencies of core packages. The main packages used were:
 - Django as the framework
@@ -189,26 +198,24 @@ Many of the packages here are dependencies of core packages. The main packages u
 
 ## BUGS OR ERRORS 🐛 😵// Issues which take me more than 2 hours to solve
 
-* CategoryBug
+* 95% of the bugs I was able to resolve through using stackoverflow. 
 
-* [CategoryBug](./static/pdfs/categorybug.pdf)
+* Stripe Webhook not responding
+  For weeks I couldn't figure out why webhooks wouldn't work when I made a payment on Heroku using stripe. If I hard coded the stripe secret key locally and then pushed this to heroku it would work. Eventually I noticed that in my Heroku config variables I had 'STRIPE_WB_KEY' instead of 'STRIPE_WH_KEY'. However even when I fixed this it still wouldn't work. I then added the STRIPE_WB_KEY to heroku through the heroku cli. This time it worked.  
+  
+* Could not access django
+  I changed my 'venv' virtual environment folder from 'venv' to '.venv'. This resulted in my requirements.txt file emptying and I couldn't access django. I had to delete everything in the django db and make migrations from scratch. I also had to re-upload the fixtures. 
+  
 
 ## Testing
 
 ### Feature Testing
 
-*If in Markdown: PDF's open in github https://github.com/JWalshe86/Nags-With-Notions2.0?tab=readme-ov-file
-
-[Manual Testing](/static/pdfs/testing/manual-testing.pdf)
-
 ### Manual Tests to assess javascript functionality
 
 All tests on functionality were passed.
-[Javascript tests on functionality](/static/pdfs/testing/Manual%20Test%20to%20Assess%20Javascript%20Functionality.pdf)
 
 ### Model Testing
-
-Use of pytest-cov to see where tests may be required. I prioritised testing my custom code, as Django would have tested it's own code extensively. I installed factory-boy to insert fake data into the database. [First successful use of Pytest](/static/pdfs/testing/first-successful-use-of-pytest.docx). Due to the complexity of this testing, and time constraints I moved onto manual tests.
 
 #### User Stories Testing<br>
 
@@ -219,69 +226,15 @@ Achieved. [Stripe Testing](/static/pdfs/stripe-testing.pdf)
 Achieved. See feature testing for more detail. As an admin I can add, edit, delete events.
 [Event Testing](static/pdfs/testevents.md)
 
-* As a user I want to be able to see my current bookings displayed on the site.
-Achieved. See feature testing for more detail.
-[Bookings list](/static/images/userstorytesting/canseebookings.png)
-
-* As a user I want to only see my own bookings, so my booking information is kept private #171 #154
-Achieved. See feature testing for more detail.
-[See own bookings](/static/images/userstorytesting/canseebookings.png)
-
-* As a user I want to quickly see a 'book now' button which brings me to the booking form #163
-Achieved. See feature testing for more detail.
-[Book Now 1](/static/images/userstorytesting/booknow1.png)
-[Book Now 2](/static/images/userstorytesting/booknow2.png)
-
-* As a user I want to be able to create bookings on the site #157
-Achieved. See feature testing for more detail.
-[Create booking](/static/images/userstorytesting/newbookingcreated.png)
-
-* As a user I want to be able to update bookings on the site #159
-Achieved. See feature testing for more detail.
-[Update booking 1](/static/images/userstorytesting/update1.png)
-[Update booking 2](/static/images/userstorytesting/update2.png)
-[Update booking 3](/static/images/userstorytesting/update3.png)
-
-* As a user I want to be able to delete bookings on the site #156
-Achieved. See feature testing for more detail.
-[Delete booking 1](/static/images/userstorytesting/delete1.png)
-[Delete booking 2](/static/images/userstorytesting/delete2.png)
-[Delete booking 3](/static/images/userstorytesting/delete3.png)
-
-* As a user I want to be able to see the prices of all the food items #131 #45
-Client asked for prices to be removed and ratings used instead.
-[See ratings](/static/images/userstorytesting/pizzaratings.png)
-
 * As a user I want to be able to register to a newsletter
 Achieved. See feature testing for more detail.
 [Newsletter Testing](/static/pdfs/newsletter_testing.md)
-
-* As a user I want to be able to see if I'm logged in #99
-Achieved username presents in header.
-[Logged in](/static/images/userstorytesting/userloggedin.png)
-
-
-* As a user I want to access my information once logged in #100
-Achieved. Restricted info for users not logged in.
-[Limited info](/static/images/userstorytesting/‫limitedinfonotloggedin.png)
 
 * As a user I want to be able to register an account using a username and password
 Achieved. See feature testing for more detail.
 [Registration Testing](/static/pdfs/register-testing.md)
 
 [Authorisation Testing](/static/pdfs/authorisation-testing.md)
-
-
-* As a user I want feedback when my form completion has been successful #93 #94
-Achieved. See feature testing for more detail.
-[success message](/static/images/userstorytesting/newbookingcreated.png)
-
-* As a user I want a dropdown toggle menu for mobile screen sizes #52
-Achieved. See feature testing for more detail.
-[Toggle Dropdown](/static/images/userstorytesting/toggledropdown.png)
-
-* As a user I want a responsive header with interactive links for ease of site navigation #51 #4
-Achieved. See feature testing for more detail.
 
 * As a user I want to be able to access social media sites from the footer #5
 Achieved. See feature testing for more detail.
@@ -361,14 +314,9 @@ The project will now be cloned locally for you to use.
 
 ## TOOLS 🧰
 
-* Icons from [remixicon.com](https://remixicon.com/)
-* [Figma](www.figma.com) was used to create the wireframes & user story map
-*[tinypng](tinypng.com) was used to compress images
-
-
 ## ACKNOWLEDGEMENTS 👏
 
-* I'd like to thank Code Institute Tutors Iris and Marco who supported and listend to myself, Abdul and Aongus every Wednesday.
+* I'd like to thank Code Institute Tutor Marco who supported and listend to myself, Abdul and Aongus every Wednesday.
 * To my mentor who gave great advice on the project
 * To everyone on youtube and stackoverflow who created content
 * To my friends, family and colleagues at 2Toucons (Chandeep) for reviewing the site
