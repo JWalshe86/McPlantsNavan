@@ -10,8 +10,11 @@ from django.template.loader import get_template
 from .models import NewsletterUser, Newsletter
 from .forms import NewsletterUserSignUpForm, NewsletterCreationForm
 
+"""Code adapted from [Making Newsletter Master Code Online](https://youtu.be/r-V3UJ6D67E?si=lPGILH0XCca_MdBm)"""
+
 
 def newsletter_signup(request):
+    """A view for signing up to newsletters"""
     form = NewsletterUserSignUpForm(request.POST or None)
 
     if form.is_valid():
@@ -53,6 +56,7 @@ def newsletter_signup(request):
 
 
 def newsletter_unsubscribe(request):
+    """A view to unsubscribe from newsletters"""
     form = NewsletterUserSignUpForm(request.POST or None)
 
     if form.is_valid():
@@ -93,8 +97,10 @@ def newsletter_unsubscribe(request):
     template = "newsletters/unsubscribe.html"
     return render(request, template, context)
 
+
 @staff_member_required
 def control_newsletter(request):
+    """A view to process submitted newsletters"""
     form = NewsletterCreationForm(request.POST or None)
 
     if form.is_valid():
@@ -122,6 +128,7 @@ def control_newsletter(request):
 
 
 def control_newsletter_list(request):
+    """A view to list newsletters"""
     newsletters = Newsletter.objects.all()
 
     paginator = Paginator(newsletters, 10)
@@ -145,6 +152,7 @@ def control_newsletter_list(request):
 
 
 def control_newsletter_detail(request, pk):
+    """A view to show newsletter detail"""
     newsletter = get_object_or_404(Newsletter, pk=pk)
 
     context = {
@@ -155,6 +163,7 @@ def control_newsletter_detail(request, pk):
 
 
 def control_newsletter_edit(request, pk):
+    """A view to edit newsletters"""
     newsletter = get_object_or_404(Newsletter, pk=pk)
 
     if request.method == "POST":
@@ -189,6 +198,7 @@ def control_newsletter_edit(request, pk):
 
 
 def control_newsletter_delete(request, pk):
+    """A view to delete newsletters"""
     newsletter = get_object_or_404(Newsletter, pk=pk)
 
     if request.method == "POST":

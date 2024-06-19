@@ -11,6 +11,9 @@ from .models import Category, Plant, PlantReview, SeasonalEvent, Stock
 from .forms import PlantForm, ReviewForm, EventForm
 
 
+"""based on Code Institues [Boutique Ado website](https://github.com/code-Institute-Solutions/boutique_ado_v1/)"""
+
+
 def all_plants(request):
     """A view to show all plants, including sorting and search queries"""
 
