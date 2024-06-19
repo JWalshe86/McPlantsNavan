@@ -118,39 +118,31 @@ The UX focused on ensuring the site was as visual as possible. User stories were
 
 # Work Flow
 
+## Issues
+
+Issues were created initially based on the projects user stories. Issues were then added to the repo's issue page as the project progressed. Issues were managed using a kanban board in the repo's projects section. Here issues were given prioritisation, and their status could be reviewed. 
+
+![Issues Example](/static/pdfs/issues.png)
+
 ## Agile
 
 ![Kanban Board](/media/readme/kanbanboard.png)
 
 #### Sprints
 
-[Sprint 1](https://github.com/JWalshe86/Nags-With-Notions2.0/milestone/19) * This will be closed but closed issues can be viewed.
+Issues were linked to github milestones. Milestones were used as Agile 'sprints'. 
 
-Sprint 1 was overdue by one month as the django lms learning material took much longer than expected. The real project has started now and I expect to work through the issues at a quicker pace. Upon reflection, and advice from slack meeting 110124 I should implement story points to get a better grasp on what can be achieved between sprints and what to prioritise. I will also pivot towards putting crud functionality on bookings rather than comments
+There were 4 sprints
 
-* Sprint 2
+![Sprints](/static/pdfs/4sprints.png)
 
-[Sprint 2](https://github.com/JWalshe86/Nags-With-Notions2.0/milestone/20) * This will be closed but closed issues can be viewed.
+* Sprint 1: Involved the initial set up of the project. Getting the template and core models/views.
 
+* Sprint 2: During this sprint the aim is to have the site connected to Stripe and a user can purchase plants online.
 
-Sprint 2 saw the completion of 50% of its tasks. Story points were introduced to get a better grasp on the workload, and this may allow one to gain a better understanding of what can be realistically achieved in Sprint 3. Considerable time was put into automatic testing, which is not a requirement for the pass criteria; so in sprint 3 effort will be directed into other areas. During Sprint 2 much of the functional objectives were achieved. In Sprint 3 I hope to divest more energy into testing. 46 open issues were passed forward from Sprint 2 to Sprint 3. 159 story points were completed in Sprint 2. 147 story points have been passed for to Sprint 3, which makes this workload realistically achievable by the end of Sprint 3.
+* Sprint 3: During sprint 2 much of the project was completed. A priority now was to ensure that I've 3 custom models, as per the requirements. Then I could testing.
 
-* [Sprint 3](https://github.com/JWalshe86/Nags-With-Notions2.0/milestone/21) * This will be closed but closed issues can be viewed.
-
-The previous sprint was supposed to prioritise testing but during testing I found several bugs. One bug took several days to fix. This involved ensuring that the registered user could only see their own bookings in the view bookings tab. Connecting the user as a foreign key to my booking model and using the booking id as an argument to track whether the booking belonged to a specific user or not was quite challenging to figure out. Thus during this phase only 6 tasks were completed. For the next two weeks I intend to double down on testing: starting with ensuring all the booking functionality is correct and documenting this in the readme. Still several weeks until the Mar 22 deadline so things appear to be on track.
-
-
-[Sprint 4](https://github.com/JWalshe86/Nags-With-Notions2.0/milestones?state=closed) * This will be closed but closed issues can be viewed.
-
-The 8 days overdue for sprint 4 was a result of extra work in my internship. However, a lot of manual testing was completed which was quite tedious. This testing also highlighted many errors which took time to fix. The main focus now is to complete the testing and the user stories.
-
-[Sprint 5](https://github.com/JWalshe86/Nags-With-Notions2.0/issues)
-
-The final sprint involved doubling down on testing. Python testing was completed. The readme was updated. My site was also tested by friends and work colleagues.
-
-Everything onn Kanban board was completed.
-
-[Kanban Board](/static/images/KanbanBoard.png)
+* Sprint 4: Top priorities were to ensure that I've met all the requirements: 3 custom models, Get AWS working to store images & connect to Heroku, Test all features, Complete README, Fix css issues on small screen sizes.
 
 ### SURFACE/DESIGN<br>
 
