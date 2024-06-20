@@ -264,6 +264,9 @@ Achieved. See feature testing for more detail.
 [Lighthouse Landing Page after admendments](/static/pdfs/lhtest2.pdg)
 [Lighthouse All Plants Page](/static/pdfs/allplantslighthousetest.pdf)
 
+All green except best practices. Some issues were in 3rd party code. Despite putting a cache control element into the head, lighthouse kept responding with an error. I tried looking for fixes no stackoverflow but was 
+unable to fix this. Additionally, a content type-x issue kept arrising. After researching this it said it may involve changing other code than just in my base.html. I've recorded both as bugs. 
+
 ## MODULES IMPORTED 👽
 
 
