@@ -270,7 +270,7 @@ Achieved. See feature testing for more detail.
 [Lighthouse Landing Page after admendments](/static/pdfs/lhtest2.pdg)
 [Lighthouse All Plants Page](/static/pdfs/allplantslighthousetest.pdf)
 
-All green except best practices. Some issues were in 3rd party code. Despite putting a cache control element into the head, lighthouse kept responding with an error. I tried looking for fixes no stackoverflow but was 
+All green except best practices. A core issue seems to be using stripe and 3rd party cookies. Some issues were in 3rd party code. Despite putting a cache control element into the head, lighthouse kept responding with an error. I tried looking for fixes no stackoverflow but was 
 unable to fix this. Additionally, a content type-x issue kept arrising. After researching this it said it may involve changing other code than just in my base.html. I've recorded both as bugs. 
 
 ## MODULES IMPORTED 👽
@@ -340,7 +340,6 @@ The project will now be cloned locally for you to use.
 * To my mentor who gave great advice on the project
 * To everyone on youtube and stackoverflow who created content
 * To my friends, family and colleagues at 2Toucons (Chandeep) for reviewing the site
-* To Nags with Notions for giving me images and ideas and reviewing the site
 * Code Institute
 * [Mimmi](https://github.com/Stockman-Jr) For testing the site and recommending I improve staff/user access permissions.
 
