@@ -106,6 +106,12 @@ The UX focused on ensuring the site was as visual as possible. User stories were
 
 ### STRUCTURE☠<br>
 
+#### WireFrame
+
+A wireframe was used to give a template for the website. This would also allow a client to review what the site may look like. It was decided to keep the site basic - and ensure the plants looked well and it was easy for users to navigate. 
+
+[WireFrame](/static/pdfs/wireframe.png)
+
 #### Database diagrams
 
 # ORM
