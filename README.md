@@ -261,6 +261,7 @@ Achieved. See feature testing for more detail.
 ### Lighthouse Testing
 
 [Lighthouse Landing Page](/static/pdfs/landingpagelighthousetest.pdf)
+[Lighthouse Landing Page after admendments](/static/pdfs/lhtest2.pdg)
 [Lighthouse All Plants Page](/static/pdfs/allplantslighthousetest.pdf)
 
 ## MODULES IMPORTED 👽
