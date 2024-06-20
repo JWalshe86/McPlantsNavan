@@ -219,7 +219,7 @@ Many of the packages here are dependencies of core packages. The main packages u
 
 ### Manual Tests to assess javascript functionality
 
-All tests on functionality were passed.
+All tests on functionality were passed..
 
 ### Screensize testing
 
@@ -256,6 +256,11 @@ Achieved. See feature testing for more detail.
 ## Python Testing
 
 * I used the black extention to lint my python code. I also passed it through https://pyrfecter.com/ and there were no issues.
+
+### Javascript Testing
+
+* [JSlint.com](https://www.jslint.com/) was used to test javascript. For the javascript in the main cart template it recommended using double quotes instead of single 
+[JSlint cart results](/static/pdfs/jslintcart.png)
 
 ### HTML Validation
 [W3C final base HTML](/static/pdfs/basehtmlnoerrors.png)
