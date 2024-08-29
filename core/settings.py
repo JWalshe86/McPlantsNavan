@@ -1,13 +1,11 @@
 import os
 import dj_database_url
-
 from dotenv import load_dotenv
 
 load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -95,7 +93,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
@@ -104,37 +101,24 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+# Database configuration
 if "DATABASE_URL" in os.environ:
     DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 else:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "d9trcmulhbgunv",
+            "USER": "u4ehi5100h1plk",
+            "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
+            "HOST": "c2dr1dq7r4d57i.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com",
+            "PORT": "5432",
         }
     }
 
 WSGI_APPLICATION = "core.wsgi.application"
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "d9trcmulhbgunv",
-        "USER": "u4ehi5100h1plk",
-        "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
-        "HOST": "c2dr1dq7r4d57i.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com",
-        "PORT": "5432",
-    }
-}
-
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -150,26 +134,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
-
 USE_I18N = True
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
 STATIC_URL = "/static/"
-STATIC_ROOT = "~/projects/McPlantsNavan/static"
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATIC_ROOT = os.path.expanduser("~/projects/McPlantsNavan/static")  # Fixed path
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-
+# Media files
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
@@ -178,7 +154,7 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
+# AWS S3 Configuration
 if "USE_AWS" in os.environ:
     AWS_STORAGE_BUCKET_NAME = "mcplantsnavan"
     AWS_S3_REGION_NAME = "eu-north-1"
@@ -194,14 +170,13 @@ if "USE_AWS" in os.environ:
     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/"
     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/"
 
-
 # Stripe Config
-
 STRIPE_CURRENCY = "usd"
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 STRIPE_WH_SECRET = os.environ.get("STRIPE_WH_SECRET", "")
 
+# Email Configuration
 if "DEVELOPMENT" in os.environ:
     DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASS")
@@ -218,3 +193,4 @@ else:
     EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
     EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASS")
     DEFAULT_FROM_EMAIL = os.getenv("EMAIL_HOST_USER")
+
