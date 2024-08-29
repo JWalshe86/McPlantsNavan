@@ -8,6 +8,10 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 from .models import Category, Plant, PlantReview, SeasonalEvent, Stock
 from .forms import PlantForm, ReviewForm, EventForm
 
+from django.db import connection
+import logging
+
+logger = logging.getLogger(__name__)
 
 def all_plants(request):
     """A view to show all plants, including sorting and search queries"""
@@ -55,19 +59,12 @@ def all_plants(request):
         "current_categories": categories,
         "current_sorting": current_sorting,
     }
+
+    # Debugging information
+    logger.debug(f"Current sorting: {current_sorting}")
+    logger.debug(f"SQL Query: {connection.queries}")
+    
     return render(request, "plants/plants.html", context)
-
-
-def plant_detail(request, plant_id):
-    """A view to show plant details"""
-
-    plant = get_object_or_404(Plant, pk=plant_id)
-
-    context = {
-        "plant": plant,
-    }
-    return render(request, "plants/plant_detail.html", context)
-
 
 @login_required
 def add_plant(request):
@@ -139,6 +136,16 @@ def delete_plant(request, plant_id):
     plant.delete()
     messages.success(request, "Plant deleted!")
     return redirect(reverse("plants"))
+
+def plant_detail(request, plant_id):
+    """A view to show plant details"""
+
+    plant = get_object_or_404(Plant, pk=plant_id)
+
+    context = {
+        "plant": plant,
+    }
+    return render(request, "plants/plant_detail.html", context)
 
 
 # Review views

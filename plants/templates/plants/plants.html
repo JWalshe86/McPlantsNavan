@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 {% load static %}
 
@@ -10,6 +11,21 @@
 {% endblock %}
 
 {% block content %}
+<!-- Debugging information -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <h4>Debug Information</h4>
+                <pre>Current Sorting: {{ current_sorting }}</pre>
+                <pre>Number of Plants: {{ plants|length }}</pre>
+                {% for plant in plants %}
+                    <pre>Plant ID: {{ plant.id }}, Name: {{ plant.name }}, Price: {{ plant.price }}, Rating: {{ plant.rating }}, Image URL: {{ plant.image.url|default:"No image" }}</pre>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Your existing content -->
     <div class="overlay" style='background-color: #5cc7f9;'></div>
     <div class="container-fluid">
         <div class="row">
@@ -60,13 +76,13 @@
                                 </a>
                                 {% else %}
                                 <a href="{% url 'plant_detail' plant.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ plant.name }}">
+                                    <img class="card-img-top img-fluid" src="{% static 'noimage.png' %}" alt="{{ plant.name }}">
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0" style='background-color: #fad3b0'>
                                     <p class="mb-0">{{ plant.name }}</p>
                                 </div>
-				<div class="card-footer pt-0 border-0 text-left" style='background-color: #fad3b0;'>
+                                <div class="card-footer pt-0 border-0 text-left" style='background-color: #fad3b0;'>
                                     <div class="row">
                                         <div class="col">
                                             <p class="lead mb-0 text-left font-weight-bold">${{ plant.price }}</p>
@@ -82,14 +98,12 @@
                                             {% else %}
                                                 <small class="text-muted">No Rating</small>
                                             {% endif %}
-					    {% if request.user.is_superuser %}
-					    <small class="ml-3">
-                                                    <a href="{% url 'edit_plant' plant.id %}">Edit</a> | 
-                                                    <a class="text-danger" href="{% url 'delete_plant' plant.id %}">Delete</a>
-                                                </small>
-
-
-					    {% endif  %}
+                                            {% if request.user.is_superuser %}
+                                            <small class="ml-3">
+                                                <a href="{% url 'edit_plant' plant.id %}">Edit</a> | 
+                                                <a class="text-danger" href="{% url 'delete_plant' plant.id %}">Delete</a>
+                                            </small>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -120,6 +134,24 @@
             </div>
         </div>
     </div>
+
+    <!-- Debug Statements -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <h4>Debug Information</h4>
+                <pre>Current Categories: {{ current_categories }}</pre>
+                <pre>Current Sorting: {{ current_sorting }}</pre>
+                <pre>Search Term: {{ search_term }}</pre>
+                <pre>Number of Plants: {{ plants|length }}</pre>
+                <pre>Plants: {{ plants }}</pre>
+                {% for plant in plants %}
+                    <pre>Plant ID: {{ plant.id }}, Name: {{ plant.name }}, Image URL: {{ plant.image.url|default:"No image" }}</pre>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     <div class="btt-button shadow-sm rounded-0 border border-black">
         <a class="btt-link d-flex h-100">
             <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
@@ -130,31 +162,37 @@
 {% block postloadjs %}
     {{ block.super }}
     <script>
-		$('.btt-link').click(function(e) {
-			window.scrollTo(0,0)
-		})
-	</script>
-    
-    <script>
-        $('#sort-selector').change(function() {
-            var selector = $(this);
-            var currentUrl = new URL(window.location);
-
-            var selectedVal = selector.val();
-            if(selectedVal != "reset"){
-                var sort = selectedVal.split("_")[0];
-                var direction = selectedVal.split("_")[1];
-
-                currentUrl.searchParams.set("sort", sort);
-                currentUrl.searchParams.set("direction", direction);
-
-                window.location.replace(currentUrl);
-            } else {
-                currentUrl.searchParams.delete("sort");
-                currentUrl.searchParams.delete("direction");
-
-                window.location.replace(currentUrl);
-            }
+        $('.btt-link').click(function(e) {
+            window.scrollTo(0,0)
         })
     </script>
+<script>
+    $('#sort-selector').change(function() {
+        var selector = $(this);
+        var currentUrl = new URL(window.location);
+
+        var selectedVal = selector.val();
+        console.log("Selected Value: " + selectedVal); // Debug statement
+        console.log("Current URL before update: " + currentUrl.href); // Debug statement
+
+        if(selectedVal != "reset"){
+            var sort = selectedVal.split("_")[0];
+            var direction = selectedVal.split("_")[1];
+
+            currentUrl.searchParams.set("sort", sort);
+            currentUrl.searchParams.set("direction", direction);
+
+            console.log("Updated URL: " + currentUrl.href); // Debug statement
+            window.location.replace(currentUrl);
+        } else {
+            currentUrl.searchParams.delete("sort");
+            currentUrl.searchParams.delete("direction");
+
+            console.log("URL after removing sort params: " + currentUrl.href); // Debug statement
+            window.location.replace(currentUrl);
+        }
+    })
+</script>
+    
 {% endblock %}
+
