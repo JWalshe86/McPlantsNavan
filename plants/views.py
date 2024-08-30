@@ -14,7 +14,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 def all_plants(request):
-    """A view to show all plants, including sorting and search queries"""
+    """A view to show all plants, including sorting and search queries."""
 
     plants = Plant.objects.all()
     query = ""
@@ -45,11 +45,13 @@ def all_plants(request):
         if "q" in request.GET:
             query = request.GET["q"]
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!"
+                )
                 return redirect(reverse("plants"))
 
-        queries = Q(name__icontains=query) | Q(description__icontains=query)
-        plants = plants.filter(queries)
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            plants = plants.filter(queries)
 
     current_sorting = f"{sort}_{direction}"
 
@@ -63,14 +65,17 @@ def all_plants(request):
     # Debugging information
     logger.debug(f"Current sorting: {current_sorting}")
     logger.debug(f"SQL Query: {connection.queries}")
-    
+
     return render(request, "plants/plants.html", context)
 
 @login_required
 def add_plant(request):
-    """Add a plant to the store"""
+    """Add a plant to the store."""
+
     if not request.user.is_superuser:
-        messages.error(request, "Sorry, only store owners can do that.")
+        messages.error(
+            request, "Sorry, only store owners can do that."
+        )
         return redirect(reverse("home"))
 
     if request.method == "POST":
@@ -82,26 +87,29 @@ def add_plant(request):
         else:
             messages.error(
                 request,
-                "Failed to add plant. Please ensure the form is valid.",
+                "Failed to add plant. Please ensure the form is valid."
             )
     else:
         form = PlantForm()
 
-    template = "plants/add_plant.html"
     context = {
         "form": form,
     }
 
-    return render(request, template, context)
-
+    return render(request, "plants/add_plant.html", context)
 
 @login_required
 def edit_plant(request, plant_id):
-    """Edit a plant in the store"""
+    """Edit a plant in the store."""
+
     if not request.user.is_superuser:
-        messages.error(request, "Sorry, only store owners can do that.")
+        messages.error(
+            request, "Sorry, only store owners can do that."
+        )
         return redirect(reverse("home"))
+
     plant = get_object_or_404(Plant, pk=plant_id)
+
     if request.method == "POST":
         form = PlantForm(request.POST, request.FILES, instance=plant)
         if form.is_valid():
@@ -111,69 +119,72 @@ def edit_plant(request, plant_id):
         else:
             messages.error(
                 request,
-                "Failed to update plant. Please ensure the form is valid.",
+                "Failed to update plant. Please ensure the form is valid."
             )
     else:
         form = PlantForm(instance=plant)
         messages.info(request, f"You are editing {plant.name}")
 
-    template = "plants/edit_plant.html"
     context = {
         "form": form,
         "plant": plant,
     }
 
-    return render(request, template, context)
-
+    return render(request, "plants/edit_plant.html", context)
 
 @login_required
 def delete_plant(request, plant_id):
-    """Delete a plant from the store"""
+    """Delete a plant from the store."""
+
     if not request.user.is_superuser:
-        messages.error(request, "Sorry, only store owners can do that.")
+        messages.error(
+            request, "Sorry, only store owners can do that."
+        )
         return redirect(reverse("home"))
+
     plant = get_object_or_404(Plant, pk=plant_id)
     plant.delete()
     messages.success(request, "Plant deleted!")
     return redirect(reverse("plants"))
 
 def plant_detail(request, plant_id):
-    """A view to show plant details"""
+    """A view to show plant details."""
 
     plant = get_object_or_404(Plant, pk=plant_id)
 
     context = {
         "plant": plant,
     }
-    return render(request, "plants/plant_detail.html", context)
 
+    return render(request, "plants/plant_detail.html", context)
 
 # Review views
 
-
 def all_reviews(request):
-    """A view to show all reviews"""
+    """A view to show all reviews."""
+
     reviews = PlantReview.objects.all()
 
     context = {
         "reviews": reviews,
     }
+
     return render(request, "plants/reviews.html", context)
 
-
 def review_detail(request, review_id):
-    """A view to show review details"""
+    """A view to show review details."""
 
     review = get_object_or_404(PlantReview, pk=review_id)
 
     context = {
         "review": review,
     }
-    return render(request, "plants/review_detail.html", context)
 
+    return render(request, "plants/review_detail.html", context)
 
 @login_required
 def add_review(request):
+    """Add a review."""
 
     if request.method == "POST":
         form = ReviewForm(request.POST, request.FILES)
@@ -184,24 +195,23 @@ def add_review(request):
         else:
             messages.error(
                 request,
-                "Failed to add review. Please ensure the form is valid.",
+                "Failed to add review. Please ensure the form is valid."
             )
-
     else:
         form = ReviewForm()
 
-    template = "plants/add_review.html"
     context = {
         "form": form,
     }
 
-    return render(request, template, context)
-
+    return render(request, "plants/add_review.html", context)
 
 @login_required
 def edit_review(request, review_id):
-    "Edit a review"
+    """Edit a review."""
+
     review = get_object_or_404(PlantReview, pk=review_id)
+
     if request.method == "POST":
         form = ReviewForm(request.POST, request.FILES, instance=review)
         if form.is_valid():
@@ -211,48 +221,49 @@ def edit_review(request, review_id):
         else:
             messages.error(
                 request,
-                "Failed to update review. Please ensure the form is valid.",
+                "Failed to update review. Please ensure the form is valid."
             )
     else:
         form = ReviewForm(instance=review)
-        messages.info(request, "Your are editing your review")
+        messages.info(request, "You are editing your review")
 
-        template = "plants/edit_review.html"
-        context = {
-            "form": form,
-            "review": review,
-        }
-        return render(request, template, context)
+    context = {
+        "form": form,
+        "review": review,
+    }
 
+    return render(request, "plants/edit_review.html", context)
 
 def delete_review(request, review_id):
-    """Delete a review from the store"""
+    """Delete a review from the store."""
+
     if not request.user.is_superuser:
-        messages.error(request, "Sorry, only store owners can do that.")
+        messages.error(
+            request, "Sorry, only store owners can do that."
+        )
         return redirect(reverse("home"))
+
     review = get_object_or_404(PlantReview, pk=review_id)
     review.delete()
     messages.success(request, "Review deleted!")
     return redirect(reverse("reviews"))
 
-
 # Seasonal Events
 
+def all_events(request):
+    """List seasonal events."""
 
-def all_events(
-    request,
-):
-    """List Season Events"""
     events = SeasonalEvent.objects.all()
 
     context = {
         "events": events,
     }
-    return render(request, "plants/events.html", context)
 
+    return render(request, "plants/events.html", context)
 
 @staff_member_required
 def add_event(request):
+    """Add a seasonal event."""
 
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES)
@@ -263,38 +274,40 @@ def add_event(request):
         else:
             messages.error(
                 request,
-                "Failed to add event. Please ensure the form is valid.",
+                "Failed to add event. Please ensure the form is valid."
             )
-
     else:
         form = EventForm()
 
-    template = "plants/add_event.html"
     context = {
         "form": form,
     }
 
-    return render(request, template, context)
-
+    return render(request, "plants/add_event.html", context)
 
 def event_detail(request, event_id):
-    """A view to show event details"""
+    """A view to show event details."""
 
     event = get_object_or_404(SeasonalEvent, pk=event_id)
 
     context = {
         "event": event,
     }
-    return render(request, "plants/event_detail.html", context)
 
+    return render(request, "plants/event_detail.html", context)
 
 @login_required
 def edit_event(request, event_id):
-    """Edit a plant in the store"""
+    """Edit a seasonal event."""
+
     if not request.user.is_superuser:
-        messages.error(request, "Sorry, only store owners can do that.")
+        messages.error(
+            request, "Sorry, only store owners can do that."
+        )
         return redirect(reverse("home"))
+
     event = get_object_or_404(SeasonalEvent, pk=event_id)
+
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
@@ -304,41 +317,42 @@ def edit_event(request, event_id):
         else:
             messages.error(
                 request,
-                "Failed to update event. Please ensure the form is valid.",
+                "Failed to update event. Please ensure the form is valid."
             )
     else:
         form = EventForm(instance=event)
         messages.info(request, f"You are editing {event.name}")
 
-    template = "plants/edit_event.html"
     context = {
         "form": form,
         "event": event,
     }
 
-    return render(request, template, context)
-
+    return render(request, "plants/edit_event.html", context)
 
 @login_required
 def delete_event(request, event_id):
-    """Delete an event from the store"""
+    """Delete a seasonal event from the store."""
+
     if not request.user.is_superuser:
-        messages.error(request, "Sorry, only store owners can do that.")
+        messages.error(
+            request, "Sorry, only store owners can do that."
+        )
         return redirect(reverse("home"))
+
     event = get_object_or_404(SeasonalEvent, pk=event_id)
     event.delete()
     messages.success(request, "Event deleted!")
     return redirect(reverse("all_events"))
 
-
 @staff_member_required
-def stock_display(
-    request,
-):
-    """List Stock"""
+def stock_display(request):
+    """List stock."""
+
     stocks = Stock.objects.all()
 
     context = {
         "stocks": stocks,
     }
+
     return render(request, "plants/stock.html", context)
