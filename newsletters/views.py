@@ -1,17 +1,22 @@
 from django.contrib import messages
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import (
+    render,
+    get_object_or_404,
+    redirect
+)
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import get_template
-
 
 from .models import NewsletterUser, Newsletter
 from .forms import NewsletterUserSignUpForm, NewsletterCreationForm
 
 
 def newsletter_signup(request):
+    """Handle newsletter sign-up form submission."""
+
     form = NewsletterUserSignUpForm(request.POST or None)
 
     if form.is_valid():
@@ -19,21 +24,21 @@ def newsletter_signup(request):
         if NewsletterUser.objects.filter(email=instance.email).exists():
             messages.warning(
                 request,
-                "Your Email Already exists in our database",
+                "Your email already exists in our database.",
                 "alert alert-warning alert-dismissible",
             )
         else:
             instance.save()
             messages.success(
                 request,
-                "Your email has been submitted to the database",
+                "Your email has been submitted to the database.",
                 "alert alert-success alert-dismissible",
             )
             subject = "Thank You For Joining Our Newsletter"
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
             with open(
-                settings.BASE_DIR + "/templates/newsletters/sign_up_email.txt"
+                settings.BASE_DIR / "templates/newsletters/sign_up_email.txt"
             ) as f:
                 signup_message = f.read()
             message = EmailMultiAlternatives(
@@ -45,6 +50,7 @@ def newsletter_signup(request):
             html_template = get_template("newsletters/sign_up_email.html").render()
             message.attach_alternative(html_template, "text/html")
             message.send()
+
     context = {
         "form": form,
     }
@@ -53,6 +59,8 @@ def newsletter_signup(request):
 
 
 def newsletter_unsubscribe(request):
+    """Handle newsletter unsubscribe form submission."""
+
     form = NewsletterUserSignUpForm(request.POST or None)
 
     if form.is_valid():
@@ -61,19 +69,19 @@ def newsletter_unsubscribe(request):
             NewsletterUser.objects.filter(email=instance.email).delete()
             messages.success(
                 request,
-                "Your email has been removed",
+                "Your email has been removed.",
                 "alert alert-success alert-dismissible",
             )
-            subject = "You have been unsubscribed"
+            subject = "You Have Been Unsubscribed"
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
             with open(
-                settings.BASE_DIR + "/templates/newsletters/unsubscribe_email.txt"
+                settings.BASE_DIR / "templates/newsletters/unsubscribe_email.txt"
             ) as f:
-                signup_message = f.read()
+                unsubscribe_message = f.read()
             message = EmailMultiAlternatives(
                 subject=subject,
-                body=signup_message,
+                body=unsubscribe_message,
                 from_email=from_email,
                 to=to_email,
             )
@@ -83,7 +91,7 @@ def newsletter_unsubscribe(request):
         else:
             messages.warning(
                 request,
-                "Your email in the database",
+                "Your email is not in the database.",
                 "alert alert-warning alert-dismissible",
             )
 
@@ -93,8 +101,11 @@ def newsletter_unsubscribe(request):
     template = "newsletters/unsubscribe.html"
     return render(request, template, context)
 
+
 @staff_member_required
 def control_newsletter(request):
+    """Render the newsletter creation form and handle submission."""
+
     form = NewsletterCreationForm(request.POST or None)
 
     if form.is_valid():
@@ -122,8 +133,9 @@ def control_newsletter(request):
 
 
 def control_newsletter_list(request):
-    newsletters = Newsletter.objects.all()
+    """Display a paginated list of newsletters."""
 
+    newsletters = Newsletter.objects.all()
     paginator = Paginator(newsletters, 10)
     page = request.GET.get("page")
 
@@ -133,18 +145,24 @@ def control_newsletter_list(request):
         items = paginator.page(1)
     except EmptyPage:
         items = paginator.page(paginator.num_pages)
+
     index = items.number - 1
     max_index = len(paginator.page_range)
     start_index = index - 5 if index >= 5 else 0
     end_index = index + 5 if index <= max_index - 5 else max_index
     page_range = paginator.page_range[start_index:end_index]
 
-    context = {"items": items, "page_range": page_range}
+    context = {
+        "items": items,
+        "page_range": page_range,
+    }
     template = "control_panel/control_newsletter_list.html"
     return render(request, template, context)
 
 
 def control_newsletter_detail(request, pk):
+    """Display the details of a specific newsletter."""
+
     newsletter = get_object_or_404(Newsletter, pk=pk)
 
     context = {
@@ -155,6 +173,8 @@ def control_newsletter_detail(request, pk):
 
 
 def control_newsletter_edit(request, pk):
+    """Edit an existing newsletter."""
+
     newsletter = get_object_or_404(Newsletter, pk=pk)
 
     if request.method == "POST":
@@ -162,7 +182,6 @@ def control_newsletter_edit(request, pk):
 
         if form.is_valid():
             newsletter = form.save()
-
             if newsletter.status == "Published":
                 subject = newsletter.subject
                 body = newsletter.body
@@ -184,11 +203,12 @@ def control_newsletter_edit(request, pk):
         "form": form,
     }
     template = "control_panel/control_newsletter.html"
-
     return render(request, template, context)
 
 
 def control_newsletter_delete(request, pk):
+    """Delete a specific newsletter."""
+
     newsletter = get_object_or_404(Newsletter, pk=pk)
 
     if request.method == "POST":
@@ -206,3 +226,4 @@ def control_newsletter_delete(request, pk):
     }
     template = "control_panel/control_newsletter_delete.html"
     return render(request, template, context)
+
