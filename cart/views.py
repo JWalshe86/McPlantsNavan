@@ -9,33 +9,29 @@ from django.contrib import messages
 
 from plants.models import Plant
 
-# Create your views here.
-
-
 def view_cart(request):
-    """A view that renders the cart contents page"""
+    """Render the cart contents page."""
 
     return render(request, "cart/cart.html")
 
 
 def add_to_cart(request, item_id):
-    """Add a quantity of the specified plant to the shopping cart"""
+    """Add a quantity of the specified plant to the shopping cart."""
 
     plant = get_object_or_404(Plant, pk=item_id)
-    quantity = int(request.POST.get("quantity"))
-    redirect_url = request.POST.get("redirect_url")
-    size = None
-    if "plant_size" in request.POST:
-        size = request.POST["plant_size"]
+    quantity = int(request.POST.get("quantity", 1))
+    redirect_url = request.POST.get("redirect_url", reverse("view_cart"))
+    size = request.POST.get("plant_size", None)
     cart = request.session.get("cart", {})
 
     if size:
-        if item_id in list(cart.keys()):
-            if size in cart[item_id]["items_by_size"].keys():
+        if item_id in cart:
+            if size in cart[item_id]["items_by_size"]:
                 cart[item_id]["items_by_size"][size] += quantity
                 messages.success(
                     request,
-                    f'Updated size {size.upper()} {plant.name} quantity to {cart[item_id]["items_by_size"][size]}',
+                    f'Updated size {size.upper()} {plant.name} quantity to '
+                    f'{cart[item_id]["items_by_size"][size]}',
                 )
             else:
                 cart[item_id]["items_by_size"][size] = quantity
@@ -49,7 +45,7 @@ def add_to_cart(request, item_id):
                 request, f"Added size {size.upper()} {plant.name} to your cart"
             )
     else:
-        if item_id in list(cart.keys()):
+        if item_id in cart:
             cart[item_id] += quantity
             messages.success(
                 request, f"Updated {plant.name} quantity to {cart[item_id]}"
@@ -63,13 +59,11 @@ def add_to_cart(request, item_id):
 
 
 def adjust_cart(request, item_id):
-    """Adjust the quantity of the specified plant to the specified amount"""
+    """Adjust the quantity of the specified plant to the specified amount."""
 
     plant = get_object_or_404(Plant, pk=item_id)
-    quantity = int(request.POST.get("quantity"))
-    size = None
-    if "plant_size" in request.POST:
-        size = request.POST["plant_size"]
+    quantity = int(request.POST.get("quantity", 0))
+    size = request.POST.get("plant_size", None)
     cart = request.session.get("cart", {})
 
     if size:
@@ -77,7 +71,8 @@ def adjust_cart(request, item_id):
             cart[item_id]["items_by_size"][size] = quantity
             messages.success(
                 request,
-                f'Updated size {size.upper()} {plant.name} quantity to {cart[item_id]["items_by_size"][size]}',
+                f'Updated size {size.upper()} {plant.name} quantity to '
+                f'{cart[item_id]["items_by_size"][size]}',
             )
         else:
             del cart[item_id]["items_by_size"][size]
@@ -102,13 +97,11 @@ def adjust_cart(request, item_id):
 
 
 def remove_from_cart(request, item_id):
-    """Remove the item from the shopping cart"""
+    """Remove the item from the shopping cart."""
 
     try:
         plant = get_object_or_404(Plant, pk=item_id)
-        size = None
-        if "plant_size" in request.POST:
-            size = request.POST["plant_size"]
+        size = request.POST.get("plant_size", None)
         cart = request.session.get("cart", {})
 
         if size:
@@ -129,3 +122,4 @@ def remove_from_cart(request, item_id):
     except Exception as e:
         messages.error(request, f"Error removing item: {e}")
         return HttpResponse(status=500)
+
