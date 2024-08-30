@@ -1,4 +1,10 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render,
+    redirect,
+    reverse,
+    get_object_or_404,
+    HttpResponse
+)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -11,9 +17,10 @@ from cart.contexts import cart_contents
 import stripe
 import json
 
-
 @require_POST
 def cache_checkout_data(request):
+    """Cache checkout data for Stripe PaymentIntent."""
+
     try:
         pid = request.POST.get("client_secret").split("_secret")[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -22,26 +29,26 @@ def cache_checkout_data(request):
             metadata={
                 "cart": json.dumps(request.session.get("cart", {})),
                 "save_info": request.POST.get("save_info"),
-                "username": request.user,
+                "username": str(request.user),
             },
         )
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(
             request,
-            "Sorry, your payment cannot be \
-            processed right now. Please try again later.",
+            "Sorry, your payment cannot be processed right now. Please try again later.",
         )
-        return HttpResponse(content=e, status=400)
+        return HttpResponse(content=str(e), status=400)
 
 
 def checkout(request):
+    """Render the checkout page and handle form submission."""
+
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == "POST":
         cart = request.session.get("cart", {})
-
         form_data = {
             "full_name": request.POST["full_name"],
             "email": request.POST["email"],
@@ -95,8 +102,7 @@ def checkout(request):
         else:
             messages.error(
                 request,
-                "There was an error with your form. \
-                Please double check your information.",
+                "There was an error with your form. Please double check your information.",
             )
     else:
         cart = request.session.get("cart", {})
@@ -118,8 +124,7 @@ def checkout(request):
     if not stripe_public_key:
         messages.warning(
             request,
-            "Stripe public key is missing. \
-            Did you forget to set it in your environment?",
+            "Stripe public key is missing. Did you forget to set it in your environment?",
         )
 
     template = "checkout/checkout.html"
@@ -133,16 +138,14 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
-    """
-    Handle successful checkouts
-    """
+    """Handle successful checkout and display the success page."""
+
     save_info = request.session.get("save_info")
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(
         request,
-        f"Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.",
+        f"Order successfully processed! Your order number is {order_number}. "
+        f"A confirmation email will be sent to {order.email}.",
     )
 
     if "cart" in request.session:
@@ -154,3 +157,4 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
