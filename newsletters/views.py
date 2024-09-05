@@ -1,10 +1,6 @@
 from django.contrib import messages
 from django.conf import settings
-from django.shortcuts import (
-    render,
-    get_object_or_404,
-    redirect
-)
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -47,13 +43,13 @@ def newsletter_signup(request):
                 from_email=from_email,
                 to=to_email,
             )
-            html_template = get_template("newsletters/sign_up_email.html").render()
+            html_template = get_template(
+                "newsletters/sign_up_email.html"
+            ).render()
             message.attach_alternative(html_template, "text/html")
             message.send()
 
-    context = {
-        "form": form,
-    }
+    context = {"form": form}
     template = "newsletters/sign_up.html"
     return render(request, template, context)
 
@@ -76,7 +72,8 @@ def newsletter_unsubscribe(request):
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
             with open(
-                settings.BASE_DIR / "templates/newsletters/unsubscribe_email.txt"
+                settings.BASE_DIR
+                / "templates/newsletters/unsubscribe_email.txt"
             ) as f:
                 unsubscribe_message = f.read()
             message = EmailMultiAlternatives(
@@ -85,7 +82,9 @@ def newsletter_unsubscribe(request):
                 from_email=from_email,
                 to=to_email,
             )
-            html_template = get_template("newsletters/unsubscribe_email.html").render()
+            html_template = get_template(
+                "newsletters/unsubscribe_email.html"
+            ).render()
             message.attach_alternative(html_template, "text/html")
             message.send()
         else:
@@ -95,9 +94,7 @@ def newsletter_unsubscribe(request):
                 "alert alert-warning alert-dismissible",
             )
 
-    context = {
-        "form": form,
-    }
+    context = {"form": form}
     template = "newsletters/unsubscribe.html"
     return render(request, template, context)
 
@@ -123,11 +120,11 @@ def control_newsletter(request):
                     message=body,
                     fail_silently=True,
                 )
-        return redirect("control_panel:control_newsletter_list")
+        return redirect(
+            "control_panel:control_newsletter_list"
+        )
 
-    context = {
-        "form": form,
-    }
+    context = {"form": form}
     template = "control_panel/control_newsletter.html"
     return render(request, template, context)
 
@@ -165,9 +162,7 @@ def control_newsletter_detail(request, pk):
 
     newsletter = get_object_or_404(Newsletter, pk=pk)
 
-    context = {
-        "newsletter": newsletter,
-    }
+    context = {"newsletter": newsletter}
     template = "control_panel/control_newsletter_detail.html"
     return render(request, template, context)
 
@@ -194,14 +189,14 @@ def control_newsletter_edit(request, pk):
                         message=body,
                         fail_silently=True,
                     )
-            return redirect("control_panel:control_newsletter_detail", pk=newsletter.pk)
+            return redirect(
+                "control_panel:control_newsletter_detail", pk=newsletter.pk
+            )
 
     else:
         form = NewsletterCreationForm(instance=newsletter)
 
-    context = {
-        "form": form,
-    }
+    context = {"form": form}
     template = "control_panel/control_newsletter.html"
     return render(request, template, context)
 
@@ -216,14 +211,13 @@ def control_newsletter_delete(request, pk):
 
         if form.is_valid():
             newsletter.delete()
-            return redirect("control_panel:control_newsletter_list")
+            return redirect(
+                "control_panel:control_newsletter_list"
+            )
 
     else:
         form = NewsletterCreationForm(instance=newsletter)
 
-    context = {
-        "form": form,
-    }
+    context = {"form": form}
     template = "control_panel/control_newsletter_delete.html"
     return render(request, template, context)
-

@@ -17,6 +17,7 @@ from cart.contexts import cart_contents
 import stripe
 import json
 
+
 @require_POST
 def cache_checkout_data(request):
     """Cache checkout data for Stripe PaymentIntent."""
@@ -36,7 +37,10 @@ def cache_checkout_data(request):
     except Exception as e:
         messages.error(
             request,
-            "Sorry, your payment cannot be processed right now. Please try again later.",
+            (
+                "Sorry, your payment cannot be processed"
+                "right now. Please try again later."
+            ),
         )
         return HttpResponse(content=str(e), status=400)
 
@@ -78,7 +82,9 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data["items_by_size"].items():
+                        for size, quantity in (
+                            item_data["items_by_size"].items()
+                        ):
                             order_line_item = OrderLineItem(
                                 order=order,
                                 plant=plant,
@@ -90,7 +96,8 @@ def checkout(request):
                     messages.error(
                         request,
                         (
-                            "One of the plants in your cart wasn't found in our database. "
+                            "One of the plants in your cart"
+                            "wasn't found in our database. "
                             "Please call us for assistance!"
                         ),
                     )
@@ -98,16 +105,24 @@ def checkout(request):
                     return redirect(reverse("view_cart"))
 
             request.session["save_info"] = "save-info" in request.POST
-            return redirect(reverse("checkout_success", args=[order.order_number]))
+            return redirect(
+                reverse("checkout_success", args=[order.order_number])
+            )
         else:
             messages.error(
                 request,
-                "There was an error with your form. Please double check your information.",
+                (
+                    "There was an error with your form."
+                    "Please double check your information."
+                ),
             )
     else:
         cart = request.session.get("cart", {})
         if not cart:
-            messages.error(request, "There's nothing in your cart at the moment")
+            messages.error(
+                request,
+                "There's nothing in your cart at the moment"
+            )
             return redirect(reverse("plants"))
 
         current_cart = cart_contents(request)
@@ -124,7 +139,8 @@ def checkout(request):
     if not stripe_public_key:
         messages.warning(
             request,
-            "Stripe public key is missing. Did you forget to set it in your environment?",
+            "Stripe public key is missing."
+            "Did you forget to set it in your environment?",
         )
 
     template = "checkout/checkout.html"
@@ -140,12 +156,14 @@ def checkout(request):
 def checkout_success(request, order_number):
     """Handle successful checkout and display the success page."""
 
-    save_info = request.session.get("save_info")
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(
         request,
-        f"Order successfully processed! Your order number is {order_number}. "
-        f"A confirmation email will be sent to {order.email}.",
+        (
+            f"Order successfully processed!"
+            "Your order number is {order_number}. "
+            f"A confirmation email will be sent to {order.email}."
+        ),
     )
 
     if "cart" in request.session:
@@ -157,4 +175,3 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
-

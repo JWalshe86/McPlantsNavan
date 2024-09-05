@@ -4,14 +4,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.db import connection
+import logging
 
 from .models import Category, Plant, PlantReview, SeasonalEvent, Stock
 from .forms import PlantForm, ReviewForm, EventForm
 
-from django.db import connection
-import logging
-
 logger = logging.getLogger(__name__)
+
 
 def all_plants(request):
     """A view to show all plants, including sorting and search queries."""
@@ -46,11 +46,14 @@ def all_plants(request):
             query = request.GET["q"]
             if not query:
                 messages.error(
-                    request, "You didn't enter any search criteria!"
+                    request,
+                    "You didn't enter any search criteria!"
                 )
                 return redirect(reverse("plants"))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = (
+                Q(name__icontains=query) | Q(description__icontains=query)
+            )
             plants = plants.filter(queries)
 
     current_sorting = f"{sort}_{direction}"
@@ -68,13 +71,15 @@ def all_plants(request):
 
     return render(request, "plants/plants.html", context)
 
+
 @login_required
 def add_plant(request):
     """Add a plant to the store."""
 
     if not request.user.is_superuser:
         messages.error(
-            request, "Sorry, only store owners can do that."
+            request,
+            "Sorry, only store owners can do that."
         )
         return redirect(reverse("home"))
 
@@ -87,7 +92,8 @@ def add_plant(request):
         else:
             messages.error(
                 request,
-                "Failed to add plant. Please ensure the form is valid."
+                "Failed to add plant. "
+                "Please ensure the form is valid."
             )
     else:
         form = PlantForm()
@@ -98,13 +104,15 @@ def add_plant(request):
 
     return render(request, "plants/add_plant.html", context)
 
+
 @login_required
 def edit_plant(request, plant_id):
     """Edit a plant in the store."""
 
     if not request.user.is_superuser:
         messages.error(
-            request, "Sorry, only store owners can do that."
+            request,
+            "Sorry, only store owners can do that."
         )
         return redirect(reverse("home"))
 
@@ -119,7 +127,8 @@ def edit_plant(request, plant_id):
         else:
             messages.error(
                 request,
-                "Failed to update plant. Please ensure the form is valid."
+                "Failed to update plant. "
+                "Please ensure the form is valid."
             )
     else:
         form = PlantForm(instance=plant)
@@ -132,13 +141,15 @@ def edit_plant(request, plant_id):
 
     return render(request, "plants/edit_plant.html", context)
 
+
 @login_required
 def delete_plant(request, plant_id):
     """Delete a plant from the store."""
 
     if not request.user.is_superuser:
         messages.error(
-            request, "Sorry, only store owners can do that."
+            request,
+            "Sorry, only store owners can do that."
         )
         return redirect(reverse("home"))
 
@@ -146,6 +157,7 @@ def delete_plant(request, plant_id):
     plant.delete()
     messages.success(request, "Plant deleted!")
     return redirect(reverse("plants"))
+
 
 def plant_detail(request, plant_id):
     """A view to show plant details."""
@@ -157,6 +169,7 @@ def plant_detail(request, plant_id):
     }
 
     return render(request, "plants/plant_detail.html", context)
+
 
 # Review views
 
@@ -171,6 +184,7 @@ def all_reviews(request):
 
     return render(request, "plants/reviews.html", context)
 
+
 def review_detail(request, review_id):
     """A view to show review details."""
 
@@ -181,6 +195,7 @@ def review_detail(request, review_id):
     }
 
     return render(request, "plants/review_detail.html", context)
+
 
 @login_required
 def add_review(request):
@@ -195,7 +210,8 @@ def add_review(request):
         else:
             messages.error(
                 request,
-                "Failed to add review. Please ensure the form is valid."
+                "Failed to add review. "
+                "Please ensure the form is valid."
             )
     else:
         form = ReviewForm()
@@ -205,6 +221,7 @@ def add_review(request):
     }
 
     return render(request, "plants/add_review.html", context)
+
 
 @login_required
 def edit_review(request, review_id):
@@ -221,7 +238,8 @@ def edit_review(request, review_id):
         else:
             messages.error(
                 request,
-                "Failed to update review. Please ensure the form is valid."
+                "Failed to update review. "
+                "Please ensure the form is valid."
             )
     else:
         form = ReviewForm(instance=review)
@@ -234,12 +252,14 @@ def edit_review(request, review_id):
 
     return render(request, "plants/edit_review.html", context)
 
+
 def delete_review(request, review_id):
     """Delete a review from the store."""
 
     if not request.user.is_superuser:
         messages.error(
-            request, "Sorry, only store owners can do that."
+            request,
+            "Sorry, only store owners can do that."
         )
         return redirect(reverse("home"))
 
@@ -247,6 +267,7 @@ def delete_review(request, review_id):
     review.delete()
     messages.success(request, "Review deleted!")
     return redirect(reverse("reviews"))
+
 
 # Seasonal Events
 
@@ -261,6 +282,7 @@ def all_events(request):
 
     return render(request, "plants/events.html", context)
 
+
 @staff_member_required
 def add_event(request):
     """Add a seasonal event."""
@@ -274,7 +296,8 @@ def add_event(request):
         else:
             messages.error(
                 request,
-                "Failed to add event. Please ensure the form is valid."
+                "Failed to add event. "
+                "Please ensure the form is valid."
             )
     else:
         form = EventForm()
@@ -284,6 +307,7 @@ def add_event(request):
     }
 
     return render(request, "plants/add_event.html", context)
+
 
 def event_detail(request, event_id):
     """A view to show event details."""
@@ -296,13 +320,15 @@ def event_detail(request, event_id):
 
     return render(request, "plants/event_detail.html", context)
 
+
 @login_required
 def edit_event(request, event_id):
     """Edit a seasonal event."""
 
     if not request.user.is_superuser:
         messages.error(
-            request, "Sorry, only store owners can do that."
+            request,
+            "Sorry, only store owners can do that."
         )
         return redirect(reverse("home"))
 
@@ -317,7 +343,8 @@ def edit_event(request, event_id):
         else:
             messages.error(
                 request,
-                "Failed to update event. Please ensure the form is valid."
+                "Failed to update event. "
+                "Please ensure the form is valid."
             )
     else:
         form = EventForm(instance=event)
@@ -330,13 +357,15 @@ def edit_event(request, event_id):
 
     return render(request, "plants/edit_event.html", context)
 
+
 @login_required
 def delete_event(request, event_id):
     """Delete a seasonal event from the store."""
 
     if not request.user.is_superuser:
         messages.error(
-            request, "Sorry, only store owners can do that."
+            request,
+            "Sorry, only store owners can do that."
         )
         return redirect(reverse("home"))
 
@@ -344,6 +373,7 @@ def delete_event(request, event_id):
     event.delete()
     messages.success(request, "Event deleted!")
     return redirect(reverse("all_events"))
+
 
 @staff_member_required
 def stock_display(request):

@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 RATING = (
     (1, "1"),
     (2, "2"),
@@ -12,7 +11,6 @@ RATING = (
 
 
 class Category(models.Model):
-
     class Meta:
         verbose_name_plural = "Categories"
 
@@ -48,7 +46,9 @@ class Plant(models.Model):
     description = models.TextField(max_length=1000)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    rating = models.DecimalField(
+        max_digits=6, decimal_places=2, null=True, blank=True
+    )
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     seasonal_event = models.ForeignKey(
@@ -70,10 +70,7 @@ class PlantReview(models.Model):
         verbose_name_plural = "Plant Reviews"
 
     def __str__(self):
-        return self.plant.name
-
-    def __str__(self):
-        return self.rating
+        return f"{self.plant.name} - {self.rating}"
 
 
 class Stock(models.Model):
@@ -81,7 +78,4 @@ class Stock(models.Model):
     plant = models.OneToOneField(Plant, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.plant.name
-
-    def __str__(self):
-        return str(self.units)
+        return f"{self.plant.name} - {self.units}"

@@ -52,7 +52,9 @@ class Order(models.Model):
         accounting for delivery costs.
         """
         self.order_total = (
-            self.lineitems.aggregate(Sum("lineitem_total"))["lineitem_total__sum"] or 0
+            self.lineitems.aggregate(Sum("lineitem_total"))[
+                "lineitem_total__sum"]
+            or 0
         )
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = (
@@ -84,7 +86,12 @@ class OrderLineItem(models.Model):
         on_delete=models.CASCADE,
         related_name="lineitems",
     )
-    plant = models.ForeignKey(Plant, null=False, blank=False, on_delete=models.CASCADE)
+    plant = models.ForeignKey(
+            Plant,
+            null=False,
+            blank=False,
+            on_delete=models.CASCADE
+    )
     plant_size = models.CharField(
         max_length=2, null=True, blank=True
     )  # XS, S, M, L, XL
