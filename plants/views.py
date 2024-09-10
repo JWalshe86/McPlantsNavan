@@ -65,10 +65,6 @@ def all_plants(request):
         "current_sorting": current_sorting,
     }
 
-    # Debugging information
-    logger.debug(f"Current sorting: {current_sorting}")
-    logger.debug(f"SQL Query: {connection.queries}")
-
     return render(request, "plants/plants.html", context)
 
 

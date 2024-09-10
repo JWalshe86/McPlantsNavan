@@ -2,6 +2,7 @@
 ./static/*
 venv/
 .venv/
+.mn-venv/
 core.Microsoft*
 core.mongo*
 core.python*

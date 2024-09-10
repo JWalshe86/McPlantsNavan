@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "storages",
-    "nested_admin",
     "home",
     "plants",
     "core",
