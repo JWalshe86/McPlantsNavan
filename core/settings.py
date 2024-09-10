@@ -115,26 +115,40 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 
-if "DATABASE_URL" in os.environ:
-    DATABASES = {
-        "default": dj_database_url.parse(
-            os.environ.get("DATABASE_URL")
-        )
+
+
+# Main database configuration for local PostgreSQL
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres",  # Update this with your actual database name
+        "USER": "postgres",
+        "PASSWORD": os.environ.get("DATABASE_PASSWORD"),  # Make sure this is set in your .env file
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
+}
+
+# Test database configuration
+if "TEST_DATABASE_URL" in os.environ:
+    test_db_url = dj_database_url.parse(os.environ.get("TEST_DATABASE_URL"))
+    DATABASES["default"]["TEST"] = {
+        "NAME": test_db_url["NAME"],
+        "USER": test_db_url["USER"],
+        "PASSWORD": test_db_url["PASSWORD"],
+        "HOST": test_db_url["HOST"],
+        "PORT": test_db_url["PORT"],
     }
 else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": "d9trcmulhbgunv",
-            "USER": "u4ehi5100h1plk",
-            "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
-            "HOST": (
-                "c2dr1dq7r4d57i.cluster-czz5s0kz4scl.eu-west-1."
-                "rds.amazonaws.com"
-            ),
-            "PORT": "5432",
-        }
+    # Let Django handle test database creation
+    DATABASES["default"]["TEST"] = {
+        "NAME": "test_mcplantsnavan",
+        "USER": "postgres",
+        "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
+        "HOST": "localhost",
+        "PORT": "5432",
     }
+
 
 WSGI_APPLICATION = "core.wsgi.application"
 
@@ -224,3 +238,4 @@ else:
     EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
     EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASS")
     DEFAULT_FROM_EMAIL = os.getenv("EMAIL_HOST_USER")
+
