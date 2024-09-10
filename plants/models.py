@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -8,7 +9,6 @@ RATING = (
     (4, "4"),
     (5, "5"),
 )
-
 
 class Category(models.Model):
     class Meta:
@@ -23,7 +23,6 @@ class Category(models.Model):
     def get_friendly_name(self):
         return self.friendly_name
 
-
 class SeasonalEvent(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
@@ -36,7 +35,6 @@ class SeasonalEvent(models.Model):
     def __str__(self):
         return self.name
 
-
 class Plant(models.Model):
     category = models.ForeignKey(
         "Category", null=True, blank=True, on_delete=models.SET_NULL
@@ -46,18 +44,22 @@ class Plant(models.Model):
     description = models.TextField(max_length=1000)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(
-        max_digits=6, decimal_places=2, null=True, blank=True
-    )
+    rating = models.PositiveIntegerField(null=True, blank=True)  # Changed to PositiveIntegerField
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     seasonal_event = models.ForeignKey(
         SeasonalEvent, on_delete=models.SET_NULL, null=True, blank=True
     )
 
+    def clean(self):
+        super().clean()
+        if self.price < 0:
+            raise ValidationError({'price': 'Price must be a positive value.'})
+        if self.rating is not None and self.rating < 1:
+            raise ValidationError({'rating': 'Rating must be between 1 and 5.'})
+
     def __str__(self):
         return self.name
-
 
 class PlantReview(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -72,10 +74,10 @@ class PlantReview(models.Model):
     def __str__(self):
         return f"{self.plant.name} - {self.rating}"
 
-
 class Stock(models.Model):
     units = models.BigIntegerField()
     plant = models.OneToOneField(Plant, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.plant.name} - {self.units}"
+
